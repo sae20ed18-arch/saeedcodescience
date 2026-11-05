@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saeed Code Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#059669;--bg:#f1f5f9;--text:#0f172a;--card:#ffffff;--muted:#64748b;--border:rgba(0,0,0,.09)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+button,input,select,textarea{font-family:inherit;font-size:14px}
+.hidden{display:none!important}
+
+/* login */
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,var(--primary),#0d9488)}
+.login-box{background:#fff;border-radius:20px;padding:36px 28px;max-width:400px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.login-box .big{font-size:60px}
+.login-box h1{color:var(--primary);font-size:24px;margin:8px 0 6px}
+.login-box p{color:#64748b;font-size:14px;margin-bottom:22px;line-height:1.7}
+.btn-google{width:100%;padding:13px;border-radius:12px;border:1px solid #dadce0;background:#fff;color:#3c4043;font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-google:hover{background:#f8f9fa}
+.err{background:#fee2e2;color:#b91c1c;border-radius:10px;padding:10px;font-size:13px;margin-top:14px;line-height:1.7}
+
+/* nav */
+nav{background:var(--card);border-bottom:1px solid var(--border);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--primary)}
+.brand span.e{font-size:26px}
+a.brand{text-decoration:none}
+img.logo{width:38px;height:38px;border-radius:50%;object-fit:cover}
+.login-box img.logo{width:88px;height:88px}
+.yt{display:inline-flex;align-items:center;gap:6px;background:#ff0000;color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:7px 12px;border-radius:9px}
+.yt:hover{opacity:.9}
+.fb{background:#1877f2}
+.who{display:flex;align-items:center;gap:8px;font-size:13px}
+.who img{width:32px;height:32px;border-radius:50%}
+.btn-out{background:#fee2e2;color:#b91c1c;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:600}
+
+.tabs{display:flex;gap:6px;padding:12px 18px;overflow-x:auto;background:var(--card);border-bottom:1px solid var(--border)}
+.tab{white-space:nowrap;padding:8px 14px;border-radius:9px;border:none;background:var(--bg);color:var(--muted);cursor:pointer;font-weight:600}
+.tab.active{background:var(--primary);color:#fff}
+
+main{max-width:1000px;margin:0 auto;padding:20px 16px 50px}
+h2{font-size:20px;margin-bottom:16px;color:var(--primary)}
+h3{font-size:16px;margin:22px 0 10px}
+.hero{text-align:center;padding:34px 10px 26px}
+.hero h1{font-size:30px;font-weight:900;margin-bottom:10px}
+.hero h1 em{font-style:normal;color:var(--primary)}
+.hero p{color:var(--muted);max-width:520px;margin:0 auto;line-height:1.8}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:22px 0}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center}
+.stat b{display:block;font-size:24px;color:var(--primary)}
+.stat span{font-size:12px;color:var(--muted)}
+
+.chips{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.chip{padding:6px 14px;border-radius:99px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-weight:600;color:var(--muted)}
+.chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.card .body{padding:14px}
+.card h4{font-size:15px;margin-bottom:6px;line-height:1.5}
+.card p{font-size:13px;color:var(--muted);line-height:1.6}
+.badge{display:inline-block;background:color-mix(in srgb,var(--primary) 14%,transparent);color:var(--primary);font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;margin-bottom:8px}
+.vwrap{position:relative;padding-top:56.25%;background:#000}
+.vwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.icon{font-size:40px;text-align:center;padding:18px 0 0}
+.btn{display:inline-block;background:var(--primary);color:#fff;border:none;border-radius:9px;padding:9px 16px;font-weight:700;cursor:pointer;text-decoration:none}
+.btn:hover{opacity:.9}
+.btn.red{background:#dc2626}
+.btn.small{padding:5px 10px;font-size:12px}
+.empty{background:var(--card);border:1px dashed var(--border);border-radius:14px;padding:30px;text-align:center;color:var(--muted)}
+
+.list{display:flex;flex-direction:column;gap:10px}
+.row{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.row .t{font-weight:700;font-size:14px}
+.row .s{font-size:12px;color:var(--muted)}
+
+form.box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
+form.box input,form.box select,form.box textarea{padding:10px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text)}
+form.box textarea{min-height:90px;resize:vertical}
+.colors{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.colors label{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.colors input[type=color]{width:100%;height:42px;padding:2px;cursor:pointer}
+.note{font-size:12px;color:var(--muted);line-height:1.7}
+.msg{background:var(--card);border-right:4px solid var(--primary);border-radius:10px;padding:12px;margin-bottom:10px}
+.msg small{color:var(--muted)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;z-index:99}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+  <div class="login-box">
+    <div class="big" id="loginEmoji">🔬</div><img class="logo hidden" id="loginLogo" alt="">
+    <h1 id="loginName">Saeed Code Science</h1>
+    <p>منصة شرح العلوم للمرحلة الابتدائية.<br>سجّل دخولك بحساب جوجل للمتابعة.</p>
+    <button class="btn-google" id="btnLogin">
+      <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.7-9.9 6.7-17.1z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-2.9-.8-4.7s.3-3.3.8-4.7l-7.9-6.1C.9 16.4 0 20.100 0 24s.9 7.600 2.600 10.800l7.900-6.100z"/><path fill="#34A853" d="M24 48c6.500 0 11.900-2.100 15.900-5.800l-7.300-5.700c-2 1.400-4.600 2.200-8.600 2.200-6.300 0-11.600-4.100-13.500-9.800l-7.900 6.100C6.500 42.600 14.600 48 24 48z"/></svg>
+      الدخول بحساب جوجل
+    </button>
+    <div class="err hidden" id="loginErr"></div>
+    <a class="yt" style="margin-top:16px" href="https://www.youtube.com/@saeedcodescience" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.500 3.600 12 3.600 12 3.600s-7.500 0-9.400.5A3 3 0 0 0 .5 6.200C0 8.100 0 12 0 12s0 3.900.5 5.800a3 3 0 0 0 2.100 2.100c1.900.5 9.400.5 9.400.5s7.500 0 9.400-.5a3 3 0 0 0 2.100-2.100c.5-1.900.5-5.800.5-5.800s0-3.900-.5-5.800zM9.600 15.600V8.400l6.200 3.600-6.200 3.600z"/></svg> قناتنا على يوتيوب</a>
+    <br><a class="yt fb hidden" id="loginFb" style="margin-top:10px" href="#" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> صفحتنا على فيسبوك</a>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="appWrap" class="hidden">
+  <nav>
+    <a class="brand" href="https://www.youtube.com/@saeedcodescience" target="_blank" rel="noopener" title="قناة اليوتيوب"><span class="e" id="navEmoji">🔬</span><img class="logo hidden" id="navLogo" alt=""><span id="navName">Saeed Code Science</span></a>
+    <div class="who"><a class="yt" href="https://www.youtube.com/@saeedcodescience" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.500 3.600 12 3.600 12 3.600s-7.500 0-9.400.5A3 3 0 0 0 .5 6.200C0 8.100 0 12 0 12s0 3.900.5 5.800a3 3 0 0 0 2.100 2.100c1.900.5 9.400.5 9.400.5s7.500 0 9.400-.5a3 3 0 0 0 2.100-2.100c.5-1.900.5-5.800.5-5.800s0-3.900-.5-5.800zM9.600 15.600V8.400l6.200 3.600-6.200 3.600z"/></svg> يوتيوب</a><a class="yt fb hidden" id="navFb" href="#" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> فيسبوك</a><img id="avatar" alt=""><span id="uname"></span><button class="btn-out" id="btnOut">خروج</button></div>
+  </nav>
+  <div class="tabs" id="tabs"></div>
+  <main id="app"></main>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, deleteDoc, doc, setDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+/* ============ الإعدادات ============ */
+const ADMIN_EMAIL = "sae20ed18@gmail.com";   // <-- إيميل الأدمن (نفس إيميل جوجل بتاعك)
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCPbrluWA16-fizxeY7-lcVx2qSj64pia8",
+  authDomain: "saeed-code-science-8dca0.firebaseapp.com",
+  projectId: "saeed-code-science-8dca0",
+  storageBucket: "saeed-code-science-8dca0.firebasestorage.app",
+  messagingSenderId: "523275635362",
+  appId: "1:523275635362:web:6aae4ce498f1ec6091a5fb"
+};
+/* =================================== */
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safeUrl = u => { try { const x = new URL(u); return ['http:','https:'].includes(x.protocol) ? x.href : '#'; } catch { return '#'; } };
+const ytId = u => { const m = String(u).match(/(?:v=|youtu\.be\/|embed\/|shorts\/|live\/)([A-Za-z0-9_-]{11})/); return m ? m[1] : (/^[A-Za-z0-9_-]{11}$/.test(String(u).trim()) ? String(u).trim() : null); };
+const toast = t => { const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2500); };
+
+let user = null, isAdmin = false, tab = 'home', grade = 'الكل', pending = false, unsubs = [];
+const imgOk = u => /^[\w.-]+\.(png|jpe?g|webp|svg|gif)$/i.test(u) || safeUrl(u) !== '#';
+let theme = { logo: '', facebook: '', primary: '#059669', bg: '#f1f5f9', text: '#0f172a', card: '#ffffff', name: 'Saeed Code Science', emoji: '🔬' };
+const data = { videos: [], courses: [], files: [], exams: [], messages: [] };
+
+let grades = ['رابعة', 'خامسة'];
+const LEGACY = { 'رابعة': 'رابعة ابتدائي', 'خامسة': 'خامسة ابتدائي' };
+const gl = g => g === 'عام' ? 'عام (كل الصفوف)' : (LEGACY[g] || g);
+const SCHEMA = {
+  videos:  { label: 'فيديو',  fields: [['title','عنوان الفيديو','text'], ['link','رابط الفيديو على يوتيوب','url'], ['grade','الصف','grade']] },
+  courses: { label: 'كورس',   fields: [['title','اسم الكورس','text'], ['description','وصف قصير','textarea'], ['icon','إيموجي (مثال 🌱)','text'], ['grade','الصف','grade']] },
+  files:   { label: 'ملف',    fields: [['title','اسم الملف','text'], ['link','رابط الملف (Google Drive)','url'], ['grade','الصف','grade']] },
+  exams:   { label: 'امتحان', fields: [['title','اسم الامتحان','text'], ['link','رابط الامتحان (Google Drive)','url'], ['grade','الصف','grade']] }
+};
+const TABS = [['home','🏠 الرئيسية'],['videos','🎬 الفيديوهات'],['courses','📚 الكورسات'],['files','📁 الملفات'],['exams','📝 الامتحانات'],['contact','💬 تواصل']];
+
+function applyTheme() {
+  const r = document.documentElement.style;
+  r.setProperty('--primary', theme.primary); r.setProperty('--bg', theme.bg);
+  r.setProperty('--text', theme.text); r.setProperty('--card', theme.card);
+  $('#navName').textContent = theme.name; $('#navEmoji').textContent = theme.emoji;
+  $('#loginName').textContent = theme.name; $('#loginEmoji').textContent = theme.emoji;
+  document.title = theme.name;
+  const fbOk = !!theme.facebook && safeUrl(theme.facebook) !== '#';
+  ['#navFb', '#loginFb'].forEach(i => { const a = $(i); if (fbOk) { a.href = safeUrl(theme.facebook); a.classList.remove('hidden'); } else a.classList.add('hidden'); });
+  const ok = !!theme.logo && imgOk(theme.logo);
+  [['#navLogo','#navEmoji'],['#loginLogo','#loginEmoji']].forEach(([i,e]) => {
+    const img = $(i), em = $(e);
+    const fallback = () => { img.classList.add('hidden'); em.classList.remove('hidden'); };
+    if (ok) { img.onerror = fallback; img.src = theme.logo; img.classList.remove('hidden'); em.classList.add('hidden'); } else fallback();
+  });
+}
+
+/* ---------- تسجيل الدخول ---------- */
+$('#btnLogin').onclick = async () => {
+  $('#loginErr').classList.add('hidden');
+  try { await signInWithPopup(auth, new GoogleAuthProvider()); }
+  catch (e) {
+    let m = 'حصلت مشكلة في تسجيل الدخول. حاول تاني.';
+    if (e.code === 'auth/unauthorized-domain') m = 'الدومين ده مش مضاف في Firebase. ادخل Authentication ← Settings ← Authorized domains وضيف دومين موقعك.';
+    if (e.code === 'auth/popup-blocked') m = 'المتصفح منع نافذة الدخول. اسمح بالنوافذ المنبثقة وحاول تاني.';
+    if (e.code === 'auth/popup-closed-by-user') m = 'اتقفلت نافذة الدخول قبل ما تخلص.';
+    $('#loginErr').textContent = m; $('#loginErr').classList.remove('hidden');
+  }
+};
+$('#btnOut').onclick = () => signOut(auth);
+
+onAuthStateChanged(auth, u => {
+  unsubs.forEach(f => f()); unsubs = [];
+  user = u;
+  if (!u) { $('#login').classList.remove('hidden'); $('#appWrap').classList.add('hidden'); return; }
+  isAdmin = (u.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase() && u.emailVerified;
+  $('#login').classList.add('hidden'); $('#appWrap').classList.remove('hidden');
+  $('#avatar').src = u.photoURL || ''; $('#uname').textContent = u.displayName || u.email;
+  tab = 'home'; listen(); render();
+});
+
+/* ---------- قراءة البيانات لحظياً ---------- */
+function listen() {
+  for (const k of ['videos','courses','files','exams'])
+    unsubs.push(onSnapshot(query(collection(db, k), orderBy('createdAt', 'desc')),
+      s => { data[k] = s.docs.map(d => ({ id: d.id, ...d.data() })); schedule(); },
+      e => console.error(k, e)));
+  unsubs.push(onSnapshot(doc(db, 'settings', 'theme'),
+    s => { if (s.exists()) { theme = { ...theme, ...s.data() }; applyTheme(); schedule(); } },
+    e => console.error('theme', e)));
+  unsubs.push(onSnapshot(doc(db, 'settings', 'grades'),
+    s => { if (s.exists() && Array.isArray(s.data().list)) { grades = s.data().list; if (grade !== 'الكل' && !grades.includes(grade)) grade = 'الكل'; schedule(); } },
+    e => console.error('grades', e)));
+  if (isAdmin)
+    unsubs.push(onSnapshot(query(collection(db, 'messages'), orderBy('createdAt', 'desc')),
+      s => { data.messages = s.docs.map(d => ({ id: d.id, ...d.data() })); schedule(); },
+      e => console.error('messages', e)));
+}
+
+/* ---------- العرض ---------- */
+function schedule() {
+  const a = document.activeElement;
+  if (a && /INPUT|TEXTAREA|SELECT/.test(a.tagName) && $('#app').contains(a)) { pending = true; return; }
+  render();
+}
+document.addEventListener('focusout', () => {
+  if (!pending) return;
+  setTimeout(() => {
+    const a = document.activeElement;
+    if (!a || !/INPUT|TEXTAREA|SELECT/.test(a.tagName)) { pending = false; render(); }
+  }, 150);
+});
+
+const gradeOk = i => grade === 'الكل' || i.grade === grade || i.grade === 'عام';
+const chips = () => `<div class="chips">${['الكل', ...grades].map(g => `<button class="chip ${grade === g ? 'active' : ''}" data-grade="${esc(g)}">${esc(gl(g))}</button>`).join('')}</div>`;
+const empty = t => `<div class="empty">${t}</div>`;
+
+const videoCard = v => { const id = ytId(v.link); return `<div class="card">${id ? `<div class="vwrap"><iframe src="https://www.youtube-nocookie.com/embed/${id}" allowfullscreen loading="lazy"></iframe></div>` : ''}<div class="body"><span class="badge">${esc(gl(v.grade))}</span><h4>${esc(v.title)}</h4></div></div>`; };
+const courseCard = c => `<div class="card"><div class="icon">${esc(c.icon || '📘')}</div><div class="body"><span class="badge">${esc(gl(c.grade))}</span><h4>${esc(c.title)}</h4><p>${esc(c.description)}</p></div></div>`;
+const linkCard = (i, label) => `<div class="card"><div class="body"><span class="badge">${esc(gl(i.grade))}</span><h4>${esc(i.title)}</h4><br><a class="btn small" href="${safeUrl(i.link)}" target="_blank" rel="noopener">${label}</a></div></div>`;
+
+function viewHome() {
+  return `<div class="hero"><h1>العلوم بتبقى سهلة مع <em>مستر سعيد</em> ${esc(theme.emoji)}</h1>
+    <p>شرح مبسط لكل درس، حل تدريبات ونماذج امتحانات، ومراجعات سريعة قبل الامتحان.</p></div>
+    <div class="stats">
+      <div class="stat"><b>${data.videos.length}</b><span>فيديو</span></div>
+      <div class="stat"><b>${data.courses.length}</b><span>كورس</span></div>
+      <div class="stat"><b>${data.files.length}</b><span>ملف</span></div>
+      <div class="stat"><b>${data.exams.length}</b><span>امتحان</span></div>
+    </div>
+    <h3>أحدث الفيديوهات</h3>
+    ${data.videos.length ? `<div class="grid">${data.videos.slice(0, 3).map(videoCard).join('')}</div>` : empty('لسه مفيش فيديوهات. هتظهر هنا أول ما تتضاف.')}`;
+}
+function viewList(key, title, cardFn, emptyMsg) {
+  const items = data[key].filter(gradeOk);
+  return `<h2>${title}</h2>${chips()}${items.length ? `<div class="grid">${items.map(cardFn).join('')}</div>` : empty(emptyMsg)}`;
+}
+function viewContact() {
+  return `<h2>💬 تواصل مع مستر سعيد</h2>
+    <form class="box" id="contactForm">
+      <input name="name" placeholder="اسمك" required value="${esc(user.displayName || '')}">
+      <textarea name="message" placeholder="اكتب رسالتك أو سؤالك..." required></textarea>
+      <button class="btn" type="submit">إرسال ✉️</button>
+    </form><p class="note">هتوصل الرسالة لمستر سعيد مع إيميلك (${esc(user.email)}).</p>`;
+}
+
+function adminForm(k) {
+  const s = SCHEMA[k];
+  const fields = s.fields.map(([n, ph, t]) =>
+    t === 'textarea' ? `<textarea name="${n}" placeholder="${ph}" required></textarea>` :
+    t === 'grade' ? `<select name="${n}" required>${[...grades, 'عام'].map(g => `<option value="${esc(g)}">${esc(gl(g))}</option>`).join('')}</select>` :
+    `<input name="${n}" type="${t}" placeholder="${ph}" required>`).join('');
+  const rows = data[k].map(i => `<div class="row"><div><div class="t">${esc(i.title)}</div><div class="s">${esc(gl(i.grade))}</div></div><button class="btn red small" data-del="${k}:${i.id}">حذف</button></div>`).join('');
+  return `<h3>➕ إضافة ${s.label}</h3><form class="box" data-add="${k}">${fields}<button class="btn" type="submit">إضافة</button></form>
+    ${data[k].length ? `<div class="list">${rows}</div>` : ''}`;
+}
+function viewAdmin() {
+  const t = theme;
+  return `<h2>⚙️ لوحة التحكم</h2>
+    <h3>🎨 شكل المنصة</h3>
+    <form class="box" id="themeForm">
+      <input name="name" value="${esc(t.name)}" placeholder="اسم المنصة" required>
+      <input name="emoji" value="${esc(t.emoji)}" placeholder="إيموجي الشعار" maxlength="4" required>
+      <input name="logo" value="${esc(t.logo || '')}" placeholder="صورة الشعار (اختياري): رابط الصورة أو اسم ملف مثل logo.png">
+      <p class="note">لو كتبت صورة، هتظهر بدل الإيموجي. سيبها فاضية لو عايز الإيموجي.</p>
+      <input name="facebook" type="url" value="${esc(t.facebook || '')}" placeholder="رابط صفحة الفيسبوك (اختياري) https://facebook.com/...">
+      <div class="colors">
+        <label>اللون الأساسي<input type="color" name="primary" value="${t.primary}"></label>
+        <label>الخلفية<input type="color" name="bg" value="${t.bg}"></label>
+        <label>لون الكروت<input type="color" name="card" value="${t.card}"></label>
+        <label>لون النص<input type="color" name="text" value="${t.text}"></label>
+      </div>
+      <button class="btn" type="submit">حفظ الشكل</button>
+    </form>
+    <h3>🎓 الصفوف</h3>
+    <form class="box" id="gradeForm">
+      <input name="g" placeholder="اسم الصف (مثال: سادسة ابتدائي)" maxlength="30" required>
+      <button class="btn" type="submit">إضافة صف</button>
+    </form>
+    <div class="list">${grades.map((g, i) => `<div class="row"><div class="t">${esc(gl(g))}</div><button class="btn red small" data-delgrade="${i}">حذف</button></div>`).join('')}</div>
+    <p class="note">حذف الصف مبيمسحش المحتوى بتاعه، المحتوى بيفضل ظاهر تحت "الكل".</p>
+    ${['videos', 'courses', 'files', 'exams'].map(adminForm).join('')}
+    <h3>📩 الرسائل (${data.messages.length})</h3>
+    ${data.messages.length ? data.messages.map(m => `<div class="msg"><b>${esc(m.name)}</b> <small>(${esc(m.email)})</small><p>${esc(m.message)}</p><button class="btn red small" data-del="messages:${m.id}">حذف</button></div>`).join('') : empty('مفيش رسائل.')}
+    <p class="note" style="margin-top:14px">الملفات والامتحانات: ارفع الملف على Google Drive، اضغط مشاركة ← "أي شخص لديه الرابط"، وانسخ الرابط هنا.</p>`;
+}
+
+function render() {
+  const tabs = [...TABS, ...(isAdmin ? [['admin', '⚙️ الإدارة']] : [])];
+  $('#tabs').innerHTML = tabs.map(([k, l]) => `<button class="tab ${tab === k ? 'active' : ''}" data-tab="${k}">${l}</button>`).join('');
+  const views = {
+    home: viewHome,
+    videos: () => viewList('videos', '🎬 الفيديوهات', videoCard, 'مفيش فيديوهات للصف ده لسه.'),
+    courses: () => viewList('courses', '📚 الكورسات', courseCard, 'مفيش كورسات للصف ده لسه.'),
+    files: () => viewList('files', '📁 الملفات', i => linkCard(i, 'فتح / تحميل 📥'), 'مفيش ملفات للصف ده لسه.'),
+    exams: () => viewList('exams', '📝 الامتحانات', i => linkCard(i, 'فتح الامتحان'), 'مفيش امتحانات للصف ده لسه.'),
+    contact: viewContact,
+    admin: () => isAdmin ? viewAdmin() : viewHome()
+  };
+  $('#app').innerHTML = (views[tab] || viewHome)();
+}
+
+/* ---------- الأحداث ---------- */
+document.addEventListener('click', async e => {
+  const t = e.target.closest('[data-tab],[data-grade],[data-del],[data-delgrade]');
+  if (!t) return;
+  if (t.dataset.tab) { tab = t.dataset.tab; render(); window.scrollTo(0, 0); }
+  else if (t.dataset.grade) { grade = t.dataset.grade; render(); }
+  else if (t.dataset.delgrade !== undefined && isAdmin) {
+    const g = grades[+t.dataset.delgrade];
+    if (g === undefined || !confirm('حذف صف "' + g + '"؟ المحتوى هيفضل موجود.')) return;
+    try { await setDoc(doc(db, 'settings', 'grades'), { list: grades.filter((_, i) => i !== +t.dataset.delgrade) }); toast('تم حذف الصف'); }
+    catch (err) { toast('فشل الحذف: ' + err.code); }
+  }
+  else if (t.dataset.del && isAdmin) {
+    if (!confirm('متأكد إنك عايز تحذف؟')) return;
+    const [col, id] = t.dataset.del.split(':');
+    try { await deleteDoc(doc(db, col, id)); toast('تم الحذف'); } catch (err) { toast('فشل الحذف: ' + err.code); }
+  }
+});
+
+document.addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, fd = Object.fromEntries(new FormData(f));
+  try {
+    if (f.dataset.add && isAdmin) {
+      const k = f.dataset.add;
+      if (fd.link) {
+        if (safeUrl(fd.link) === '#') return toast('الرابط مش صحيح');
+        if (k === 'videos' && !ytId(fd.link)) return toast('ده مش رابط يوتيوب صحيح');
+      }
+      await addDoc(collection(db, k), { ...fd, createdAt: serverTimestamp() });
+      f.reset(); toast('تمت الإضافة ✅');
+    } else if (f.id === 'gradeForm' && isAdmin) {
+      const g = (fd.g || '').trim();
+      if (!g || g === 'الكل' || g === 'عام') return toast('اكتب اسم صف مختلف');
+      if (grades.includes(g)) return toast('الصف ده موجود بالفعل');
+      await setDoc(doc(db, 'settings', 'grades'), { list: [...grades, g] });
+      f.reset(); toast('تمت إضافة الصف ✅');
+    } else if (f.id === 'themeForm' && isAdmin) {
+      if (fd.logo && !imgOk(fd.logo)) return toast('رابط الصورة مش صحيح');
+      if (fd.facebook && safeUrl(fd.facebook) === '#') return toast('رابط الفيسبوك مش صحيح');
+      await setDoc(doc(db, 'settings', 'theme'), fd, { merge: true }); toast('تم حفظ الشكل ✅');
+    } else if (f.id === 'contactForm') {
+      await addDoc(collection(db, 'messages'), { name: fd.name, message: fd.message, email: user.email, uid: user.uid, createdAt: serverTimestamp() });
+      f.reset(); toast('وصلت رسالتك ✅');
+    }
+  } catch (err) { toast(err.code === 'permission-denied' ? 'مفيش صلاحية. اتأكد من القواعد وإيميل الأدمن' : 'حصل خطأ: ' + err.code); }
+});
+
+applyTheme();
+</script>
+</body>
+</html>
