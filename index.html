@@ -204,7 +204,7 @@ img,iframe,video{max-width:100%}
   <div class="l-side">
     <div class="l-brand"><span class="e hidden" id="loginEmoji">🔬</span><img class="logo hidden" id="loginLogo" alt=""><span id="loginName">Saeed Code Science</span></div>
     <h1>العلوم بتبقى سهلة وممتعة</h1>
-    <p>شرح مبسط لكل درس، حل تدريبات ونماذج امتحانات، ومراجعات سريعة قبل الامتحان للمرحلة الابتدائية.</p>
+    <p>شرح مبسط لكل درس، حل تدريبات ونماذج امتحانات، ومراجعات سريعة قبل الامتحان.</p>
     <ul class="feat"><li>🎬 فيديوهات شرح لكل درس</li><li>📝 نماذج امتحانات وتدريبات</li><li>⚡ مراجعات سريعة قبل الامتحان</li></ul>
   </div>
   <div class="l-main">
@@ -276,6 +276,7 @@ const LEGACY = { 'رابعة': 'رابعة ابتدائي', 'خامسة': 'خا�
 const gl = g => g === 'عام' ? 'عام (كل الصفوف)' : (LEGACY[g] || g);
 const SCHEMA = {
   videos:  { label: 'فيديو',  fields: [['title','عنوان الفيديو','text'], ['link','رابط الفيديو على يوتيوب','url'], ['grade','الصف','grade']] },
+group: { label: 'مجموعات',   fields: [['title','اسم المجموعة','text'], ['description','وصف قصير','textarea'], ['grade','الصف','grade']] },
   courses: { label: 'كورس',   fields: [['title','اسم الكورس','text'], ['description','وصف قصير','textarea'], ['icon','إيموجي (مثال 🌱)','text'], ['grade','الصف','grade']] },
   files:   { label: 'ملف',    fields: [['title','اسم الملف','text'], ['link','رابط الملف (Google Drive)','url'], ['grade','الصف','grade']] },
   exams:   { label: 'امتحان', fields: [['title','اسم الامتحان','text'], ['link','رابط الامتحان (Google Drive)','url'], ['grade','الصف','grade']] }
