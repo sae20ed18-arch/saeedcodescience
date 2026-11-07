@@ -2,8 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Saeed Code Science</title>
 <link rel="icon" href="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2314b8a6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234f46e5%22/%3E%3C/linearGradient%3E%3CclipPath%20id%3D%22c%22%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22/%3E%3C/clipPath%3E%3C/defs%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20x%3D%22100%22%20y%3D%22326%22%20width%3D%22320%22%20height%3D%22110%22%20fill%3D%22%23fff%22%20clip-path%3D%22url%28%23c%29%22/%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%2222%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%234f46e5%22%20stroke-width%3D%2214%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%22226%2C350%20204%2C372%20226%2C394%22/%3E%3Cline%20x1%3D%22266%22%20y1%3D%22346%22%20x2%3D%22246%22%20y2%3D%22398%22/%3E%3Cpolyline%20points%3D%22286%2C350%20308%2C372%20286%2C394%22/%3E%3C/g%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22178%22%20r%3D%229%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Ccircle%20cx%3D%22272%22%20cy%3D%22248%22%20r%3D%227%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.85%22/%3E%3Ccircle%20cx%3D%22236%22%20cy%3D%22284%22%20r%3D%2211%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Cpath%20d%3D%22M398%2092l7%2018%2018%207-18%207-7%2018-7-18-18-7%2018-7z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -162,6 +161,21 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
 .ovl{position:absolute;inset:0;z-index:5;cursor:pointer;border:2px dashed var(--accent);border-radius:inherit;background:rgba(20,184,166,.07)}
 .ovl::after{content:"✏️ تعديل";position:absolute;top:8px;left:8px;background:var(--accent);color:#fff;font-size:11px;font-weight:800;padding:3px 9px;border-radius:99px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+html{-webkit-text-size-adjust:100%}
+body{-webkit-tap-highlight-color:transparent;padding-bottom:env(safe-area-inset-bottom)}
+img,iframe,video{max-width:100%}
+.tab,.chip,.btn,.btn-out,.yt{min-height:40px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.pane{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:14px;box-shadow:var(--shadow);min-width:0}
+.pane .chips{margin-bottom:10px}
+.acts{display:flex;gap:6px}
+.pay{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:var(--shadow);margin-top:6px}
+.payinfo{white-space:pre-wrap;background:var(--bg);border:1px dashed var(--accent);border-radius:12px;padding:12px;font-family:inherit;margin:10px 0;line-height:1.8}
+@media(min-width:901px){.pane{max-height:calc(100vh - 150px);overflow:auto}}
+@media(min-width:1400px){main,.tabs{max-width:1240px}}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+@media(max-width:560px){main{padding:12px 12px 80px}.tabs{padding:12px 12px 2px}.top{padding:8px 12px}.hero2 h1{font-size:23px}h2{font-size:18px}.grid{grid-template-columns:1fr}#modal{padding:0}.mbox{border-radius:22px 22px 0 0;align-self:flex-end}.row{flex-wrap:wrap}#editFab{bottom:calc(14px + env(safe-area-inset-bottom));right:12px;padding:11px 14px;font-size:13px}.l-main{padding:20px 16px}}
 </style>
 </head>
 <body>
@@ -205,7 +219,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import { getFirestore, collection, addDoc, deleteDoc, doc, setDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFirestore, collection, addDoc, deleteDoc, doc, setDoc, onSnapshot, query, orderBy, where, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 /* ============ الإعدادات ============ */
 const ADMIN_EMAIL = "sae20ed18@gmail.com";   // <-- إيميل الأدمن (نفس إيميل جوجل بتاعك)
@@ -231,6 +245,7 @@ const ytId = u => { const m = String(u).match(/(?:v=|youtu\.be\/|embed\/|shorts\
 const toast = t => { const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2500); };
 
 let user = null, isAdmin = false, tab = 'home', grade = 'الكل', pending = false, unsubs = [], edit = false, texts = {}, animUntil = Date.now() + 1500;
+let access = {}, mySubs = [], allSubs = [], members = [], pay = { info: '' }, adminSec = 'theme', stuGrade = null, cUnsubs = [], parts = {}, wt = 0;
 const DEFAULT_LOGO = 'data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2314b8a6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234f46e5%22/%3E%3C/linearGradient%3E%3CclipPath%20id%3D%22c%22%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22/%3E%3C/clipPath%3E%3C/defs%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20x%3D%22100%22%20y%3D%22326%22%20width%3D%22320%22%20height%3D%22110%22%20fill%3D%22%23fff%22%20clip-path%3D%22url%28%23c%29%22/%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%2222%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%234f46e5%22%20stroke-width%3D%2214%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%22226%2C350%20204%2C372%20226%2C394%22/%3E%3Cline%20x1%3D%22266%22%20y1%3D%22346%22%20x2%3D%22246%22%20y2%3D%22398%22/%3E%3Cpolyline%20points%3D%22286%2C350%20308%2C372%20286%2C394%22/%3E%3C/g%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22178%22%20r%3D%229%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Ccircle%20cx%3D%22272%22%20cy%3D%22248%22%20r%3D%227%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.85%22/%3E%3Ccircle%20cx%3D%22236%22%20cy%3D%22284%22%20r%3D%2211%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Cpath%20d%3D%22M398%2092l7%2018%2018%207-18%207-7%2018-7-18-18-7%2018-7z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3C/svg%3E';
 const imgOk = u => /^[\w.-]+\.(png|jpe?g|webp|svg|gif)$/i.test(u) || safeUrl(u) !== '#';
 const logoSrc = () => (theme.logo && imgOk(theme.logo)) ? theme.logo : DEFAULT_LOGO;
@@ -323,7 +338,7 @@ $('#btnLogin').onclick = async () => {
 $('#btnOut').onclick = () => signOut(auth);
 
 onAuthStateChanged(auth, u => {
-  unsubs.forEach(f => f()); unsubs = [];
+  unsubs.forEach(f => f()); unsubs = []; cUnsubs.forEach(f => f()); cUnsubs = []; parts = {}; for (const k in data) data[k] = []; access = {}; mySubs = []; allSubs = []; members = [];
   user = u;
   if (!u) { $('#login').classList.remove('hidden'); $('#appWrap').classList.add('hidden'); return; }
   isAdmin = (u.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase() && u.emailVerified;
@@ -333,17 +348,45 @@ onAuthStateChanged(auth, u => {
 });
 
 /* ---------- قراءة البيانات لحظياً ---------- */
+const ts = x => x.createdAt?.toMillis?.() ?? 9e15;
+function later() { clearTimeout(wt); wt = setTimeout(watchContent, 60); }
+function watchContent() {
+  cUnsubs.forEach(f => f()); cUnsubs = []; parts = {};
+  const gs = isAdmin ? [null] : ['عام', ...grades.filter(g => access[g] === true)];
+  for (const k of ['videos', 'courses', 'files', 'exams']) for (const g of gs) {
+    const q = g === null ? query(collection(db, k), orderBy('createdAt', 'desc')) : query(collection(db, k), where('grade', '==', g));
+    cUnsubs.push(onSnapshot(q, s => {
+      parts[k + '|' + g] = s.docs.map(d => ({ id: d.id, ...d.data() }));
+      data[k] = Object.keys(parts).filter(x => x.startsWith(k + '|')).flatMap(x => parts[x]).sort((a, b) => ts(b) - ts(a));
+      schedule();
+    }, e => console.error(k, g, e)));
+  }
+}
+const locked = g => !isAdmin && g !== 'الكل' && g !== 'عام' && access[g] !== true;
+function paywall(g) {
+  const last = mySubs.filter(x => x.grade === g).sort((a, b) => ts(b) - ts(a))[0], st = last && last.status;
+  const msg = st === 'pending' ? '<div class="hint">⏳ طلبك قيد المراجعة. الصف هيتفتحلك أول ما مستر سعيد يقبله.</div>' : st === 'rejected' ? '<div class="err">❌ الطلب اترفض. راجع رقم العملية وابعت تاني.</div>' : access[g] === false ? '<div class="err">⛔ اشتراكك في الصف ده اتلغى. تقدر تدفع وتبعت طلب جديد.</div>' : '';
+  return `<div class="pay"><h3 style="margin-top:0">🔒 صف ${esc(gl(g))} محتاج اشتراك</h3>${msg}<p class="note">حوّل رسوم الاشتراك على الحساب ده، وبعدين اكتب رقم العملية وابعت الطلب:</p><pre class="payinfo">${esc(pay.info || 'تواصل مع مستر سعيد لمعرفة طريقة الدفع.')}</pre>${st === 'pending' ? '' : `<form class="box" id="subForm"><input type="hidden" name="g" value="${esc(g)}"><input name="ref" placeholder="رقم العملية / رقم المحفظة اللي حوّلت منها" required maxlength="80"><button class="btn" type="submit">إرسال طلب الاشتراك ✉️</button></form>`}</div>`;
+}
 function listen() {
-  for (const k of ['videos','courses','files','exams'])
-    unsubs.push(onSnapshot(query(collection(db, k), orderBy('createdAt', 'desc')),
-      s => { data[k] = s.docs.map(d => ({ id: d.id, ...d.data() })); schedule(); },
-      e => console.error(k, e)));
+  const uid = user.uid, mref = doc(db, 'members', uid);
+  unsubs.push(onSnapshot(mref, s => {
+    if (!s.exists()) { setDoc(mref, { name: user.displayName || '', email: user.email || '', photo: user.photoURL || '', createdAt: serverTimestamp() }).catch(e => console.error(e)); return; }
+    const a = s.data().access || {};
+    if (JSON.stringify(a) !== JSON.stringify(access)) { access = a; later(); } else schedule();
+  }, e => console.error('member', e)));
+  unsubs.push(onSnapshot(doc(db, 'settings', 'payment'), s => { pay = s.exists() ? s.data() : { info: '' }; schedule(); }, e => console.error(e)));
+  if (isAdmin) {
+    unsubs.push(onSnapshot(collection(db, 'members'), s => { members = s.docs.map(d => ({ id: d.id, ...d.data() })); schedule(); }, e => console.error(e)));
+    unsubs.push(onSnapshot(collection(db, 'subs'), s => { allSubs = s.docs.map(d => ({ id: d.id, ...d.data() })); schedule(); }, e => console.error(e)));
+  } else unsubs.push(onSnapshot(query(collection(db, 'subs'), where('uid', '==', uid)), s => { mySubs = s.docs.map(d => ({ id: d.id, ...d.data() })); schedule(); }, e => console.error(e)));
+  later();
   unsubs.push(onSnapshot(doc(db, 'settings', 'theme'),
     s => { if (s.exists()) { theme = { ...theme, ...s.data() }; applyTheme(); schedule(); } },
     e => console.error('theme', e)));
   unsubs.push(onSnapshot(doc(db, 'settings', 'texts'), s => { texts = s.exists() ? s.data() : {}; schedule(); }, e => console.error('texts', e)));
   unsubs.push(onSnapshot(doc(db, 'settings', 'grades'),
-    s => { if (s.exists() && Array.isArray(s.data().list)) { grades = s.data().list; if (grade !== 'الكل' && !grades.includes(grade)) grade = 'الكل'; schedule(); } },
+    s => { if (s.exists() && Array.isArray(s.data().list)) { grades = s.data().list; if (grade !== 'الكل' && !grades.includes(grade)) grade = 'الكل'; later(); schedule(); } },
     e => console.error('grades', e)));
   if (isAdmin)
     unsubs.push(onSnapshot(query(collection(db, 'messages'), orderBy('createdAt', 'desc')),
@@ -366,7 +409,7 @@ document.addEventListener('focusout', () => {
 });
 
 const gradeOk = i => grade === 'الكل' || i.grade === grade || i.grade === 'عام';
-const chips = () => `<div class="chips">${['الكل', ...grades].map(g => `<button class="chip ${grade === g ? 'active' : ''}" data-grade="${esc(g)}">${esc(gl(g))}</button>`).join('')}</div>`;
+const chips = () => `<div class="chips">${['الكل', ...grades].map(g => `<button class="chip ${grade === g ? 'active' : ''}" data-grade="${esc(g)}">${locked(g) ? '🔒 ' : ''}${esc(gl(g))}</button>`).join('')}</div>`;
 const empty = t => `<div class="empty">${t}</div>`;
 
 const videoCard = v => { const id = ytId(v.link); return `<div class="card" data-k="videos" data-id="${v.id}">${id ? `<div class="vwrap"><iframe src="https://www.youtube-nocookie.com/embed/${id}" allowfullscreen loading="lazy"></iframe></div>` : ''}<div class="body"><span class="badge">${esc(gl(v.grade))}</span><h4>${esc(v.title)}</h4></div></div>`; };
@@ -389,12 +432,13 @@ function viewHome() {
       <div class="stat"><b>${data.files.length}</b><span>ملف</span></div>
       <div class="stat"><b>${data.exams.length}</b><span>امتحان</span></div>
     </div>
-    ${grades.length ? `<h2>${tx('picksTitle', 'اختار صفك')}</h2><div class="picks">${grades.map(g => `<button class="pick" data-pick="${esc(g)}">🎓 ${esc(gl(g))}</button>`).join('')}</div>` : ''}
+    ${grades.length ? `<h2>${tx('picksTitle', 'اختار صفك')}</h2><div class="picks">${grades.map(g => `<button class="pick" data-pick="${esc(g)}">${locked(g) ? '🔒' : '🎓'} ${esc(gl(g))}</button>`).join('')}</div>` : ''}
     <h2>${tx('latestTitle', 'أحدث الفيديوهات')}</h2>
     ${data.videos.length ? `<div class="grid">${data.videos.slice(0, 3).map(videoCard).join('')}</div>` : empty('لسه مفيش فيديوهات. هتظهر هنا أول ما تتضاف.')}`;
 }
 function viewList(key, title, cardFn, emptyMsg) {
   const items = data[key].filter(gradeOk);
+  if (locked(grade)) return `<h2>${title}</h2>${chips()}${paywall(grade)}`;
   return `<h2>${title}</h2>${chips()}${items.length ? `<div class="grid">${items.map(cardFn).join('')}</div>` : empty(emptyMsg)}${edit ? `<button class="addcard" data-new="${key}">➕ إضافة ${SCHEMA[key].label}</button>` : ''}`;
 }
 function viewContact() {
@@ -416,22 +460,29 @@ function adminForm(k) {
   return `<h3>➕ إضافة ${s.label}</h3><form class="box" data-add="${k}">${fields}<button class="btn" type="submit">إضافة</button></form>
     ${data[k].length ? `<div class="list">${rows}</div>` : ''}`;
 }
+const SECS = [['theme', '🎨 الشكل'], ['grades', '🎓 الصفوف'], ['videos', '🎬 فيديوهات'], ['courses', '📚 كورسات'], ['files', '📁 ملفات'], ['exams', '📝 امتحانات'], ['pay', '💳 الدفع'], ['msgs', '📩 الرسائل']];
+function secHtml(k) {
+  if (k === 'theme') return themeForm();
+  if (SCHEMA[k]) return adminForm(k);
+  if (k === 'grades') return `<form class="box" id="gradeForm"><input name="g" placeholder="اسم الصف (مثال: سادسة ابتدائي)" maxlength="30" required><button class="btn" type="submit">إضافة صف</button></form><div class="list">${grades.map((g, i) => `<div class="row"><div class="t">${esc(gl(g))}</div><button class="btn red small" data-delgrade="${i}">حذف</button></div>`).join('')}</div><p class="note">حذف الصف مبيمسحش المحتوى بتاعه.</p>`;
+  if (k === 'pay') return `<h3>💳 بيانات استلام الفلوس</h3><form class="box" id="payForm"><textarea name="info" placeholder="مثال:&#10;فودافون كاش: 010xxxxxxxx&#10;إنستا باي: name@instapay&#10;الاشتراك: 100 جنيه شهرياً">${esc(pay.info)}</textarea><button class="btn" type="submit">حفظ</button></form><p class="note">النص ده بيظهر للطالب لما يدوس على صف مقفول. الطالب بيحوّل ويبعتلك رقم العملية، وإنت بتقبله من قسم المتابعة.</p>`;
+  return `<h3>📩 الرسائل (${data.messages.length})</h3>${data.messages.length ? data.messages.map(m => `<div class="msg"><b>${esc(m.name)}</b> <small>(${esc(m.email)})</small><p>${esc(m.message)}</p><button class="btn red small" data-del="messages:${m.id}">حذف</button></div>`).join('') : empty('مفيش رسائل.')}`;
+}
+function stuPanel() {
+  if (!grades.length) return empty('أضف صف الأول من قسم الصفوف.');
+  const g = grades.includes(stuGrade) ? stuGrade : grades[0]; stuGrade = g;
+  const has = x => members.filter(m => m.access && m.access[x] === true);
+  const pend = allSubs.filter(x => x.grade === g && x.status === 'pending'), act = has(g);
+  return `<div class="chips">${grades.map(x => `<button class="chip ${x === g ? 'active' : ''}" data-stu="${esc(x)}">${esc(gl(x))} (${has(x).length})</button>`).join('')}</div>
+    <h3>⏳ طلبات الاشتراك (${pend.length})</h3>
+    <div class="list">${pend.map(p => `<div class="row"><div><div class="t">${esc(p.name)}</div><div class="s">${esc(p.email)} · رقم العملية: ${esc(p.ref)}</div></div><div class="acts"><button class="btn small" data-ok="${p.id}">قبول ✅</button><button class="btn red small" data-no="${p.id}">رفض</button></div></div>`).join('') || empty('مفيش طلبات جديدة.')}</div>
+    <h3>✅ طلبة ${esc(gl(g))} (${act.length})</h3>
+    <div class="list">${act.map(m => `<div class="row"><div><div class="t">${esc(m.name)}</div><div class="s">${esc(m.email)}</div></div><button class="btn red small" data-kick="${m.id}">طرد</button></div>`).join('') || empty('مفيش طلبة مشتركين لسه.')}</div>
+    <p class="note" style="margin-top:10px">إجمالي المسجلين في المنصة: ${members.length}</p>`;
+}
 function viewAdmin() {
-  const t = theme;
-  return `<h2>⚙️ لوحة التحكم</h2>
-    <h3>🎨 شكل المنصة</h3>
-    ${themeForm()}
-    <h3>🎓 الصفوف</h3>
-    <form class="box" id="gradeForm">
-      <input name="g" placeholder="اسم الصف (مثال: سادسة ابتدائي)" maxlength="30" required>
-      <button class="btn" type="submit">إضافة صف</button>
-    </form>
-    <div class="list">${grades.map((g, i) => `<div class="row"><div class="t">${esc(gl(g))}</div><button class="btn red small" data-delgrade="${i}">حذف</button></div>`).join('')}</div>
-    <p class="note">حذف الصف مبيمسحش المحتوى بتاعه، المحتوى بيفضل ظاهر تحت "الكل".</p>
-    ${['videos', 'courses', 'files', 'exams'].map(adminForm).join('')}
-    <h3>📩 الرسائل (${data.messages.length})</h3>
-    ${data.messages.length ? data.messages.map(m => `<div class="msg"><b>${esc(m.name)}</b> <small>(${esc(m.email)})</small><p>${esc(m.message)}</p><button class="btn red small" data-del="messages:${m.id}">حذف</button></div>`).join('') : empty('مفيش رسائل.')}
-    <p class="note" style="margin-top:14px">الملفات والامتحانات: ارفع الملف على Google Drive، اضغط مشاركة ← "أي شخص لديه الرابط"، وانسخ الرابط هنا.</p>`;
+  const sec = SECS.some(x => x[0] === adminSec) ? adminSec : 'theme';
+  return `<h2>⚙️ لوحة التحكم</h2><div class="split"><div class="pane"><div class="chips">${SECS.map(([k, l]) => `<button class="chip ${sec === k ? 'active' : ''}" data-sec="${k}">${l}</button>`).join('')}</div>${secHtml(sec)}</div><div class="pane"><h3 style="margin-top:0">👥 متابعة الطلبة</h3>${stuPanel()}</div></div>`;
 }
 
 function render() {
@@ -463,10 +514,24 @@ document.addEventListener('click', async e => {
   }
   const rt = cl('[data-resettx]');
   if (rt && isAdmin) { try { await setDoc(doc(db, 'settings', 'texts'), { [rt.dataset.resettx]: '' }, { merge: true }); toast('رجع النص الأصلي'); closeModal(); } catch (err) { toast('فشل: ' + err.code); } return; }
-  const t = e.target.closest('[data-tab],[data-grade],[data-pick],[data-del],[data-delgrade]');
+  const t = e.target.closest('[data-tab],[data-grade],[data-pick],[data-del],[data-delgrade],[data-sec],[data-stu],[data-ok],[data-no],[data-kick]');
   if (!t) return;
   if (t.dataset.tab) { tab = t.dataset.tab; animUntil = Date.now() + 900; render(); window.scrollTo(0, 0); }
   else if (t.dataset.grade) { grade = t.dataset.grade; animUntil = Date.now() + 900; render(); }
+  else if (t.dataset.sec) { adminSec = t.dataset.sec; render(); }
+  else if (t.dataset.stu) { stuGrade = t.dataset.stu; render(); }
+  else if (isAdmin && (t.dataset.ok || t.dataset.no)) {
+    const sb = allSubs.find(x => x.id === (t.dataset.ok || t.dataset.no)); if (!sb) return;
+    try {
+      if (t.dataset.ok) await setDoc(doc(db, 'members', sb.uid), { access: { [sb.grade]: true } }, { merge: true });
+      await setDoc(doc(db, 'subs', sb.id), { status: t.dataset.ok ? 'approved' : 'rejected' }, { merge: true });
+      toast(t.dataset.ok ? 'تم قبول الطالب ✅' : 'تم رفض الطلب');
+    } catch (err) { toast('فشل: ' + err.code); }
+  }
+  else if (isAdmin && t.dataset.kick) {
+    if (!confirm('طرد الطالب من الصف ده؟')) return;
+    try { await setDoc(doc(db, 'members', t.dataset.kick), { access: { [stuGrade || grades[0]]: false } }, { merge: true }); toast('تم الطرد'); } catch (err) { toast('فشل: ' + err.code); }
+  }
   else if (t.dataset.pick !== undefined) { tab = 'videos'; grade = t.dataset.pick; animUntil = Date.now() + 900; render(); window.scrollTo(0, 0); }
   else if (t.dataset.delgrade !== undefined && isAdmin) {
     const g = grades[+t.dataset.delgrade];
@@ -493,6 +558,11 @@ document.addEventListener('submit', async e => {
       }
       await addDoc(collection(db, k), { ...fd, createdAt: serverTimestamp() });
       f.reset(); toast('تمت الإضافة ✅');
+    } else if (f.id === 'payForm' && isAdmin) {
+      await setDoc(doc(db, 'settings', 'payment'), { info: fd.info }, { merge: true }); toast('تم حفظ بيانات الدفع ✅');
+    } else if (f.id === 'subForm') {
+      if ((fd.ref || '').trim().length < 3) return toast('اكتب رقم العملية');
+      await addDoc(collection(db, 'subs'), { uid: user.uid, name: user.displayName || '', email: user.email || '', grade: fd.g, ref: fd.ref.trim(), status: 'pending', createdAt: serverTimestamp() }); toast('اتبعت طلبك، هيتراجع قريب ✅');
     } else if (f.dataset.save && isAdmin) {
       const [k, id] = f.dataset.save.split(':');
       if (fd.link) { if (safeUrl(fd.link) === '#') return toast('الرابط مش صحيح'); if (k === 'videos' && !ytId(fd.link)) return toast('ده مش رابط يوتيوب صحيح'); }
