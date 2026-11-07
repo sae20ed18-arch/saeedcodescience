@@ -2,120 +2,205 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Saeed Code Science</title>
+<link rel="icon" href="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2314b8a6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234f46e5%22/%3E%3C/linearGradient%3E%3CclipPath%20id%3D%22c%22%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22/%3E%3C/clipPath%3E%3C/defs%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20x%3D%22100%22%20y%3D%22326%22%20width%3D%22320%22%20height%3D%22110%22%20fill%3D%22%23fff%22%20clip-path%3D%22url%28%23c%29%22/%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%2222%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%234f46e5%22%20stroke-width%3D%2214%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%22226%2C350%20204%2C372%20226%2C394%22/%3E%3Cline%20x1%3D%22266%22%20y1%3D%22346%22%20x2%3D%22246%22%20y2%3D%22398%22/%3E%3Cpolyline%20points%3D%22286%2C350%20308%2C372%20286%2C394%22/%3E%3C/g%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22178%22%20r%3D%229%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Ccircle%20cx%3D%22272%22%20cy%3D%22248%22%20r%3D%227%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.85%22/%3E%3Ccircle%20cx%3D%22236%22%20cy%3D%22284%22%20r%3D%2211%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Cpath%20d%3D%22M398%2092l7%2018%2018%207-18%207-7%2018-7-18-18-7%2018-7z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--primary:#059669;--bg:#f1f5f9;--text:#0f172a;--card:#ffffff;--muted:#64748b;--border:rgba(0,0,0,.09)}
+:root{--primary:#4f46e5;--accent:#14b8a6;--bg:#f5f7fb;--text:#0f172a;--card:#ffffff;--muted:#64748b;--border:rgba(15,23,42,.09);--shadow:0 10px 30px rgba(15,23,42,.07);--deep:color-mix(in srgb,var(--primary) 55%,#0b1020)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.65}
 button,input,select,textarea{font-family:inherit;font-size:14px}
+a{color:inherit}
 .hidden{display:none!important}
+img.logo{object-fit:cover}
 
-/* login */
-#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,var(--primary),#0d9488)}
-.login-box{background:#fff;border-radius:20px;padding:36px 28px;max-width:400px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2)}
-.login-box .big{font-size:60px}
-.login-box h1{color:var(--primary);font-size:24px;margin:8px 0 6px}
-.login-box p{color:#64748b;font-size:14px;margin-bottom:22px;line-height:1.7}
-.btn-google{width:100%;padding:13px;border-radius:12px;border:1px solid #dadce0;background:#fff;color:#3c4043;font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
-.btn-google:hover{background:#f8f9fa}
-.err{background:#fee2e2;color:#b91c1c;border-radius:10px;padding:10px;font-size:13px;margin-top:14px;line-height:1.7}
+/* ---------- login ---------- */
+#login{min-height:100vh;display:grid;grid-template-columns:1.15fr 1fr}
+.l-side{background:linear-gradient(145deg,#0b1020,var(--deep) 60%,var(--primary));color:#fff;padding:56px;display:flex;flex-direction:column;justify-content:center;gap:22px;position:relative;overflow:hidden}
+.l-side::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 50%,transparent),transparent 70%);top:-160px;left:-120px}
+.l-side::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);bottom:-100px;right:-60px}
+.l-side>*{position:relative;z-index:1}
+.l-brand{display:flex;align-items:center;gap:14px;font-weight:900;font-size:22px}
+.l-brand img.logo{width:62px;height:62px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.l-brand .e{font-size:44px}
+.l-side h1{font-size:36px;font-weight:900;line-height:1.35}
+.l-side p{color:rgba(255,255,255,.78);max-width:440px}
+.feat{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.feat li{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);padding:10px 16px;border-radius:14px;font-weight:600;max-width:380px}
+.l-main{display:flex;align-items:center;justify-content:center;padding:28px}
+.login-box{max-width:370px;width:100%;text-align:center}
+.login-box h2{font-size:26px;font-weight:900;margin:0 0 6px}
+.login-box h2::before{display:none}
+.login-box p{color:var(--muted);margin-bottom:22px}
+.btn-google{width:100%;padding:14px;border-radius:14px;border:1px solid var(--border);background:var(--card);color:var(--text);font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:var(--shadow);transition:.2s}
+.btn-google:hover{transform:translateY(-2px)}
+.err{background:#fee2e2;color:#b91c1c;border-radius:12px;padding:10px 12px;font-size:13px;margin-top:14px;line-height:1.7}
+.socials{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+@media(max-width:820px){#login{grid-template-columns:1fr}.l-side{padding:30px 22px;gap:14px}.l-side h1{font-size:26px}.feat{display:none}}
 
-/* nav */
-nav{background:var(--card);border-bottom:1px solid var(--border);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;gap:10px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--primary)}
-.brand span.e{font-size:26px}
-a.brand{text-decoration:none}
-img.logo{width:38px;height:38px;border-radius:50%;object-fit:cover}
-.login-box img.logo{width:88px;height:88px}
-.yt{display:inline-flex;align-items:center;gap:6px;background:#ff0000;color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:7px 12px;border-radius:9px}
-.yt:hover{opacity:.9}
-.fb{background:#1877f2}
+/* ---------- header ---------- */
+.top{background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:17px;text-decoration:none;color:var(--text)}
+.brand img.logo{width:42px;height:42px;border-radius:13px;box-shadow:0 6px 16px rgba(15,23,42,.18)}
+.brand .e{font-size:28px}
 .who{display:flex;align-items:center;gap:8px;font-size:13px}
-.who img{width:32px;height:32px;border-radius:50%}
-.btn-out{background:#fee2e2;color:#b91c1c;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:600}
+.who img{width:34px;height:34px;border-radius:50%;border:2px solid var(--border)}
+#uname{max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-out{background:#fee2e2;color:#b91c1c;border:none;padding:7px 13px;border-radius:10px;cursor:pointer;font-weight:700}
+.yt{display:inline-flex;align-items:center;gap:6px;background:#ff0000;color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:7px 13px;border-radius:10px;transition:.2s}
+.yt:hover{opacity:.9;transform:translateY(-1px)}
+.fb{background:#1877f2}
+@media(max-width:640px){#uname{display:none}.brand span#navName{font-size:14px}.yt{padding:7px 9px}}
 
-.tabs{display:flex;gap:6px;padding:12px 18px;overflow-x:auto;background:var(--card);border-bottom:1px solid var(--border)}
-.tab{white-space:nowrap;padding:8px 14px;border-radius:9px;border:none;background:var(--bg);color:var(--muted);cursor:pointer;font-weight:600}
-.tab.active{background:var(--primary);color:#fff}
+.tabs{display:flex;gap:8px;padding:16px 20px 4px;overflow-x:auto;max-width:1040px;margin:0 auto}
+.tab{white-space:nowrap;padding:9px 16px;border-radius:99px;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;font-weight:700;transition:.2s}
+.tab:hover{color:var(--text)}
+.tab.active{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border-color:transparent;box-shadow:0 8px 20px color-mix(in srgb,var(--primary) 35%,transparent)}
 
-main{max-width:1000px;margin:0 auto;padding:20px 16px 50px}
-h2{font-size:20px;margin-bottom:16px;color:var(--primary)}
-h3{font-size:16px;margin:22px 0 10px}
-.hero{text-align:center;padding:34px 10px 26px}
-.hero h1{font-size:30px;font-weight:900;margin-bottom:10px}
-.hero h1 em{font-style:normal;color:var(--primary)}
-.hero p{color:var(--muted);max-width:520px;margin:0 auto;line-height:1.8}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:22px 0}
-.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center}
-.stat b{display:block;font-size:24px;color:var(--primary)}
-.stat span{font-size:12px;color:var(--muted)}
+main{max-width:1040px;margin:0 auto;padding:16px 20px 50px}
+h2{font-size:21px;font-weight:900;margin:30px 0 14px}
+h2::before{content:"";display:inline-block;width:6px;height:22px;border-radius:4px;background:linear-gradient(var(--primary),var(--accent));margin-left:10px;vertical-align:-4px}
+main>h2:first-child{margin-top:14px}
+h3{font-size:16px;margin:24px 0 10px}
 
-.chips{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
-.chip{padding:6px 14px;border-radius:99px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-weight:600;color:var(--muted)}
+/* ---------- home ---------- */
+.hero2{border-radius:28px;padding:36px 32px;color:#fff;background:linear-gradient(135deg,#0b1020,var(--deep) 55%,var(--primary));display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;position:relative;overflow:hidden;margin-bottom:18px}
+.hero2::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 55%,transparent),transparent 70%);top:-130px;left:-90px}
+.hero2>*{position:relative}
+.pill{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);padding:4px 14px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:12px}
+.hero2 h1{font-size:34px;font-weight:900;line-height:1.35;margin-bottom:10px}
+.hero2 h1 em{font-style:normal;background:linear-gradient(90deg,#5eead4,#a5b4fc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero2 p{color:rgba(255,255,255,.8);max-width:480px;margin-bottom:20px}
+.h-btns{display:flex;gap:10px;flex-wrap:wrap}
+.h-logo{width:160px;height:160px;border-radius:40px;box-shadow:0 24px 60px rgba(0,0,0,.4);transform:rotate(-6deg)}
+@media(max-width:700px){.hero2{grid-template-columns:1fr;text-align:center;padding:28px 18px}.h-logo{display:none}.hero2 p{margin-inline:auto}.h-btns{justify-content:center}.hero2 h1{font-size:25px}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:16px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:28px;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12px;color:var(--muted);font-weight:600}
+.picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.pick{border:1px solid var(--border);background:var(--card);border-radius:18px;padding:18px;text-align:center;cursor:pointer;font-weight:800;font-size:15px;box-shadow:var(--shadow);transition:.2s;color:var(--text)}
+.pick:hover{transform:translateY(-4px);border-color:var(--primary)}
+
+/* ---------- lists ---------- */
+.chips{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.chip{padding:7px 16px;border-radius:99px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-weight:700;color:var(--muted);transition:.2s}
 .chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
-.card .body{padding:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:.25s}
+.card:hover{transform:translateY(-4px)}
+.card .body{padding:16px}
 .card h4{font-size:15px;margin-bottom:6px;line-height:1.5}
-.card p{font-size:13px;color:var(--muted);line-height:1.6}
-.badge{display:inline-block;background:color-mix(in srgb,var(--primary) 14%,transparent);color:var(--primary);font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;margin-bottom:8px}
+.card p{font-size:13px;color:var(--muted);line-height:1.7}
+.badge{display:inline-block;background:color-mix(in srgb,var(--primary) 12%,transparent);color:var(--primary);font-size:11px;font-weight:800;padding:3px 11px;border-radius:99px;margin-bottom:8px}
 .vwrap{position:relative;padding-top:56.25%;background:#000}
 .vwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.icon{font-size:40px;text-align:center;padding:18px 0 0}
-.btn{display:inline-block;background:var(--primary);color:#fff;border:none;border-radius:9px;padding:9px 16px;font-weight:700;cursor:pointer;text-decoration:none}
-.btn:hover{opacity:.9}
+.icon{width:64px;height:64px;margin:18px 16px 0;border-radius:18px;display:grid;place-items:center;font-size:32px;background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 18%,transparent),color-mix(in srgb,var(--accent) 22%,transparent))}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:800;cursor:pointer;text-decoration:none;transition:.2s}
+.btn:hover{opacity:.92;transform:translateY(-1px)}
 .btn.red{background:#dc2626}
-.btn.small{padding:5px 10px;font-size:12px}
-.empty{background:var(--card);border:1px dashed var(--border);border-radius:14px;padding:30px;text-align:center;color:var(--muted)}
+.btn.small{padding:6px 12px;font-size:12px}
+.btn.light{background:#fff;color:#1e1b4b}
+.btn.ghost{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3)}
+.empty{background:var(--card);border:1px dashed var(--border);border-radius:18px;padding:34px;text-align:center;color:var(--muted)}
 
+/* ---------- admin ---------- */
 .list{display:flex;flex-direction:column;gap:10px}
-.row{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.row{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
 .row .t{font-weight:700;font-size:14px}
 .row .s{font-size:12px;color:var(--muted)}
-
-form.box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
-form.box input,form.box select,form.box textarea{padding:10px;border:1px solid var(--border);border-radius:9px;background:var(--bg);color:var(--text)}
+form.box{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;margin-bottom:10px;box-shadow:var(--shadow)}
+form.box input,form.box select,form.box textarea{padding:11px;border:1px solid var(--border);border-radius:11px;background:var(--bg);color:var(--text)}
 form.box textarea{min-height:90px;resize:vertical}
 .colors{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
 .colors label{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
 .colors input[type=color]{width:100%;height:42px;padding:2px;cursor:pointer}
 .note{font-size:12px;color:var(--muted);line-height:1.7}
-.msg{background:var(--card);border-right:4px solid var(--primary);border-radius:10px;padding:12px;margin-bottom:10px}
+.msg{background:var(--card);border-right:4px solid var(--primary);border-radius:12px;padding:12px;margin-bottom:10px;box-shadow:var(--shadow)}
 .msg small{color:var(--muted)}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;z-index:99}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:12px;font-size:13px;z-index:99}
+
+#login,#appWrap{position:relative;z-index:1}
+.bubbles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bubbles span{position:absolute;font-size:36px;opacity:.13;animation:float 14s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-34px) rotate(14deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.85) translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes bob{0%,100%{transform:rotate(-6deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-14px)}}
+@keyframes drift{to{transform:translate(70px,60px) scale(1.25)}}
+@keyframes slideup{from{opacity:0;transform:translate(-50%,20px)}to{opacity:1;transform:translate(-50%,0)}}
+.h-logo{animation:bob 4.5s ease-in-out infinite}
+.l-side::before,.hero2::before{animation:drift 11s ease-in-out infinite alternate}
+.toast{animation:slideup .3s}
+#app.anim>*,#app.anim .card,#app.anim .stat,#app.anim .pick,#app.anim .row{animation:rise .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*60ms)}
+.card{position:relative}
+.card:hover{transform:translateY(-6px) rotate(-.4deg)}
+.card::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.3) 50%,transparent 60%);transform:translateX(-120%);transition:transform .7s;pointer-events:none;z-index:2}
+.card:hover::before{transform:translateX(120%)}
+.btn:active,.tab:active,.chip:active,.pick:active{transform:scale(.95)}
+[data-style=neon]{--bg:#0a0f24;--card:#131a36;--text:#e8ecff;--muted:#98a4cf;--border:rgba(255,255,255,.1);--shadow:0 10px 30px rgba(0,0,0,.45)}
+[data-style=neon] .card:hover,[data-style=neon] .pick:hover{box-shadow:0 0 0 1px var(--accent),0 10px 40px color-mix(in srgb,var(--accent) 35%,transparent)}
+[data-style=kids]{--bg:#fff7e8;--text:#2b2350;--accent:#ff8a3d;--border:rgba(43,35,80,.1)}
+[data-style=kids] .bubbles span{opacity:.35}
+[data-style=kids] .card,[data-style=kids] .stat,[data-style=kids] .pick{border-radius:28px;border-width:2px}
+[data-style=kids] .hero2{border-radius:42px}
+[data-style=kids] .tab,[data-style=kids] .chip{border-width:2px}
+#editFab{position:fixed;bottom:18px;right:18px;z-index:60;border:none;border-radius:99px;padding:12px 18px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:0 12px 30px rgba(0,0,0,.3);cursor:pointer}
+#modal{position:fixed;inset:0;background:rgba(8,12,28,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px;z-index:200;animation:fade .2s}
+.mbox{background:var(--card);color:var(--text);border-radius:22px;max-width:480px;width:100%;max-height:90vh;overflow:auto;padding:18px;box-shadow:0 30px 80px rgba(0,0,0,.4);animation:pop .3s cubic-bezier(.2,1.2,.3,1)}
+.mhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-weight:900;font-size:17px}
+#mclose{border:none;background:var(--bg);width:34px;height:34px;border-radius:50%;cursor:pointer;color:var(--text)}
+.mbox .btn{margin-top:8px}
+.hint{background:color-mix(in srgb,var(--accent) 15%,transparent);border:1px dashed var(--accent);border-radius:14px;padding:10px 14px;margin-bottom:12px;font-size:13px;font-weight:700}
+.addcard{border:2px dashed var(--accent);background:transparent;color:var(--accent);border-radius:20px;min-height:90px;font-weight:800;cursor:pointer;width:100%;margin-top:14px}
+.editing .tx{outline:2px dashed var(--accent);outline-offset:2px;cursor:pointer;border-radius:6px}
+.ovl{position:absolute;inset:0;z-index:5;cursor:pointer;border:2px dashed var(--accent);border-radius:inherit;background:rgba(20,184,166,.07)}
+.ovl::after{content:"✏️ تعديل";position:absolute;top:8px;left:8px;background:var(--accent);color:#fff;font-size:11px;font-weight:800;padding:3px 9px;border-radius:99px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
+<div class="bubbles" aria-hidden="true"><span style="left:6%;top:18%;animation-delay:-1s">🧪</span><span style="left:88%;top:12%;animation-delay:-4s">🔬</span><span style="left:14%;top:72%;animation-delay:-7s">🧬</span><span style="left:82%;top:66%;animation-delay:-2s">🔭</span><span style="left:48%;top:86%;animation-delay:-9s">⚗️</span><span style="left:52%;top:8%;animation-delay:-5s">🌱</span></div>
 <!-- LOGIN -->
 <div id="login">
-  <div class="login-box">
-    <div class="big" id="loginEmoji">🔬</div><img class="logo hidden" id="loginLogo" alt="">
-    <h1 id="loginName">Saeed Code Science</h1>
-    <p>منصة شرح العلوم للمرحلة الابتدائية.<br>سجّل دخولك بحساب جوجل للمتابعة.</p>
-    <button class="btn-google" id="btnLogin">
-      <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.7-9.9 6.7-17.1z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-2.9-.8-4.7s.3-3.3.8-4.7l-7.9-6.1C.9 16.4 0 20.100 0 24s.9 7.600 2.600 10.800l7.900-6.100z"/><path fill="#34A853" d="M24 48c6.500 0 11.900-2.100 15.900-5.800l-7.300-5.700c-2 1.400-4.600 2.200-8.600 2.200-6.300 0-11.600-4.100-13.500-9.800l-7.900 6.100C6.500 42.600 14.600 48 24 48z"/></svg>
-      الدخول بحساب جوجل
-    </button>
-    <div class="err hidden" id="loginErr"></div>
-    <a class="yt" style="margin-top:16px" href="https://www.youtube.com/@saeedcodescience" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.500 3.600 12 3.600 12 3.600s-7.500 0-9.400.5A3 3 0 0 0 .5 6.200C0 8.100 0 12 0 12s0 3.900.5 5.800a3 3 0 0 0 2.100 2.100c1.900.5 9.400.5 9.400.5s7.500 0 9.400-.5a3 3 0 0 0 2.100-2.100c.5-1.900.5-5.800.5-5.800s0-3.900-.5-5.800zM9.600 15.600V8.400l6.200 3.600-6.200 3.600z"/></svg> قناتنا على يوتيوب</a>
-    <br><a class="yt fb hidden" id="loginFb" style="margin-top:10px" href="#" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> صفحتنا على فيسبوك</a>
+  <div class="l-side">
+    <div class="l-brand"><span class="e hidden" id="loginEmoji">🔬</span><img class="logo hidden" id="loginLogo" alt=""><span id="loginName">Saeed Code Science</span></div>
+    <h1>العلوم بتبقى سهلة وممتعة</h1>
+    <p>شرح مبسط لكل درس، حل تدريبات ونماذج امتحانات، ومراجعات سريعة قبل الامتحان للمرحلة الابتدائية.</p>
+    <ul class="feat"><li>🎬 فيديوهات شرح لكل درس</li><li>📝 نماذج امتحانات وتدريبات</li><li>⚡ مراجعات سريعة قبل الامتحان</li></ul>
+  </div>
+  <div class="l-main">
+    <div class="login-box">
+      <h2>أهلاً بيك 👋</h2>
+      <p>سجّل دخولك بحساب جوجل للمتابعة.</p>
+      <button class="btn-google" id="btnLogin"><svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.3 5.7c4.3-4 6.7-9.9 6.7-17.1z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-2.9-.8-4.7s.3-3.3.8-4.7l-7.9-6.1C.9 16.4 0 20.1 0 24s.9 7.6 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.3-5.7c-2 1.4-4.6 2.2-8.6 2.2-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg> الدخول بحساب جوجل</button>
+      <div class="err hidden" id="loginErr"></div>
+      <div class="socials">
+        <a class="yt" href="https://www.youtube.com/@saeedcodescience" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg> قناتنا على يوتيوب</a>
+        <a class="yt fb hidden" id="loginFb" href="#" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> صفحتنا على فيسبوك</a>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- APP -->
 <div id="appWrap" class="hidden">
-  <nav>
-    <a class="brand" href="https://www.youtube.com/@saeedcodescience" target="_blank" rel="noopener" title="قناة اليوتيوب"><span class="e" id="navEmoji">🔬</span><img class="logo hidden" id="navLogo" alt=""><span id="navName">Saeed Code Science</span></a>
-    <div class="who"><a class="yt" href="https://www.youtube.com/@saeedcodescience" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.500 3.600 12 3.600 12 3.600s-7.500 0-9.400.5A3 3 0 0 0 .5 6.200C0 8.100 0 12 0 12s0 3.900.5 5.800a3 3 0 0 0 2.100 2.100c1.900.5 9.400.5 9.400.5s7.500 0 9.400-.5a3 3 0 0 0 2.100-2.100c.5-1.900.5-5.800.5-5.800s0-3.900-.5-5.800zM9.600 15.600V8.400l6.200 3.600-6.200 3.600z"/></svg> يوتيوب</a><a class="yt fb hidden" id="navFb" href="#" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> فيسبوك</a><img id="avatar" alt=""><span id="uname"></span><button class="btn-out" id="btnOut">خروج</button></div>
-  </nav>
+  <header class="top">
+    <a class="brand" href="https://www.youtube.com/@saeedcodescience" target="_blank" rel="noopener" title="قناة اليوتيوب"><span class="e hidden" id="navEmoji">🔬</span><img class="logo hidden" id="navLogo" alt=""><span id="navName">Saeed Code Science</span></a>
+    <div class="who"><a class="yt" href="https://www.youtube.com/@saeedcodescience" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg> يوتيوب</a><a class="yt fb hidden" id="navFb" href="#" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> فيسبوك</a><img id="avatar" alt=""><span id="uname"></span><button class="btn-out" id="btnOut">خروج</button></div>
+  </header>
   <div class="tabs" id="tabs"></div>
   <main id="app"></main>
+  <footer>© <span id="footName"></span> · شرح العلوم بطريقة سهلة وممتعة 💙</footer>
 </div>
 
+<button id="editFab" class="hidden"></button>
+<div id="modal" class="hidden"><div class="mbox"><div class="mhead"><b id="mtitle"></b><button id="mclose">✕</button></div><div id="mbody"></div></div></div>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
@@ -144,9 +229,11 @@ const safeUrl = u => { try { const x = new URL(u); return ['http:','https:'].inc
 const ytId = u => { const m = String(u).match(/(?:v=|youtu\.be\/|embed\/|shorts\/|live\/)([A-Za-z0-9_-]{11})/); return m ? m[1] : (/^[A-Za-z0-9_-]{11}$/.test(String(u).trim()) ? String(u).trim() : null); };
 const toast = t => { const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2500); };
 
-let user = null, isAdmin = false, tab = 'home', grade = 'الكل', pending = false, unsubs = [];
+let user = null, isAdmin = false, tab = 'home', grade = 'الكل', pending = false, unsubs = [], edit = false, texts = {}, animUntil = Date.now() + 1500;
+const DEFAULT_LOGO = 'data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2314b8a6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234f46e5%22/%3E%3C/linearGradient%3E%3CclipPath%20id%3D%22c%22%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22/%3E%3C/clipPath%3E%3C/defs%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20x%3D%22100%22%20y%3D%22326%22%20width%3D%22320%22%20height%3D%22110%22%20fill%3D%22%23fff%22%20clip-path%3D%22url%28%23c%29%22/%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%2222%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%234f46e5%22%20stroke-width%3D%2214%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%22226%2C350%20204%2C372%20226%2C394%22/%3E%3Cline%20x1%3D%22266%22%20y1%3D%22346%22%20x2%3D%22246%22%20y2%3D%22398%22/%3E%3Cpolyline%20points%3D%22286%2C350%20308%2C372%20286%2C394%22/%3E%3C/g%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22178%22%20r%3D%229%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Ccircle%20cx%3D%22272%22%20cy%3D%22248%22%20r%3D%227%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.85%22/%3E%3Ccircle%20cx%3D%22236%22%20cy%3D%22284%22%20r%3D%2211%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Cpath%20d%3D%22M398%2092l7%2018%2018%207-18%207-7%2018-7-18-18-7%2018-7z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3C/svg%3E';
 const imgOk = u => /^[\w.-]+\.(png|jpe?g|webp|svg|gif)$/i.test(u) || safeUrl(u) !== '#';
-let theme = { logo: '', facebook: '', primary: '#059669', bg: '#f1f5f9', text: '#0f172a', card: '#ffffff', name: 'Saeed Code Science', emoji: '🔬' };
+const logoSrc = () => (theme.logo && imgOk(theme.logo)) ? theme.logo : DEFAULT_LOGO;
+let theme = { logo: '', facebook: '', style: 'kids', primary: '#4f46e5', bg: '#f5f7fb', text: '#0f172a', card: '#ffffff', name: 'Saeed Code Science', emoji: '🔬' };
 const data = { videos: [], courses: [], files: [], exams: [], messages: [] };
 
 let grades = ['رابعة', 'خامسة'];
@@ -160,21 +247,64 @@ const SCHEMA = {
 };
 const TABS = [['home','🏠 الرئيسية'],['videos','🎬 الفيديوهات'],['courses','📚 الكورسات'],['files','📁 الملفات'],['exams','📝 الامتحانات'],['contact','💬 تواصل']];
 
+const tx = (k, d) => `<span class="tx" data-tx="${k}">${esc(texts[k] || d)}</span>`;
+function themeForm() { const t = theme; return `<form class="box" id="themeForm">
+      <input name="name" value="${esc(t.name)}" placeholder="اسم المنصة" required>
+      <input name="emoji" value="${esc(t.emoji)}" placeholder="إيموجي احتياطي (لو الصورة مظهرتش)" maxlength="4" required>
+      <input name="logo" value="${esc(t.logo || '')}" placeholder="صورة الشعار (اختياري): رابط الصورة أو اسم ملف مثل logo.png">
+      <p class="note">سيب خانة الصورة فاضية عشان يظهر اللوجو الافتراضي الجديد. ولو كتبت رابط صورة أو logo.png هتظهر هي بدله.</p>
+      <input name="facebook" type="url" value="${esc(t.facebook || '')}" placeholder="رابط صفحة الفيسبوك (اختياري) https://facebook.com/...">
+      <div class="colors">
+        <label>اللون الأساسي<input type="color" name="primary" value="${t.primary}"></label>
+        <label>الخلفية<input type="color" name="bg" value="${t.bg}"></label>
+        <label>لون الكروت<input type="color" name="card" value="${t.card}"></label>
+        <label>لون النص<input type="color" name="text" value="${t.text}"></label>
+      </div>
+      <label class="note">ستايل المنصة</label><select name="style">${[['kids', 'مرح للأطفال'], ['modern', 'عصري فاتح'], ['neon', 'ليلي نيون']].map(([v, l]) => `<option value="${v}" ${(t.style || 'kids') === v ? 'selected' : ''}>${l}</option>`).join('')}</select>
+      <button class="btn" type="submit">حفظ الشكل</button>
+    </form>`; }
+function openModal(title, html) { $('#mtitle').textContent = title; $('#mbody').innerHTML = html; $('#modal').classList.remove('hidden'); }
+function closeModal() { $('#modal').classList.add('hidden'); }
+const gradeSel = (n, v) => `<select name="${n}" required>${[...grades, 'عام'].map(g => `<option value="${esc(g)}" ${g === v ? 'selected' : ''}>${esc(gl(g))}</option>`).join('')}</select>`;
+function fieldsHtml(k, v = {}) {
+  return SCHEMA[k].fields.map(([n, ph, t]) => t === 'textarea' ? `<textarea name="${n}" placeholder="${ph}" required>${esc(v[n])}</textarea>` : t === 'grade' ? gradeSel(n, v[n]) : `<input name="${n}" type="${t}" placeholder="${ph}" value="${esc(v[n])}" required>`).join('');
+}
+function openItem(ref) {
+  const [k, id] = ref.split(':'), sc = SCHEMA[k];
+  if (!id) return openModal('➕ إضافة ' + sc.label, `<form class="box" data-add="${k}">${fieldsHtml(k)}<button class="btn" type="submit">إضافة</button></form>`);
+  const it = data[k].find(x => x.id === id); if (!it) return;
+  openModal('✏️ تعديل ' + sc.label, `<form class="box" data-save="${k}:${id}">${fieldsHtml(k, it)}<button class="btn" type="submit">حفظ التعديل</button></form><button class="btn red" data-del="${k}:${id}">🗑️ حذف ${sc.label}</button>`);
+}
+function openText(el) {
+  const k = el.dataset.tx;
+  openModal('✏️ تعديل النص', `<form class="box" id="textForm"><input type="hidden" name="k" value="${esc(k)}"><textarea name="v" required>${esc(el.textContent)}</textarea><button class="btn" type="submit">حفظ</button></form><button class="btn small" data-resettx="${esc(k)}">↩️ رجوع للنص الأصلي</button>`);
+}
+function afterRender() {
+  document.body.classList.toggle('editing', edit);
+  const app = $('#app'), go = Date.now() < animUntil;
+  app.classList.toggle('anim', go);
+  app.querySelectorAll('.card,.stat,.pick,.row').forEach((e, i) => e.style.setProperty('--i', Math.min(i, 14)));
+  if (go) app.querySelectorAll('.stat b').forEach(b => { const n = +b.textContent; if (!n) return; const t0 = performance.now(); (function f(t) { const p = Math.min((t - t0) / 800, 1); b.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(f); })(t0); });
+  if (edit) app.querySelectorAll('.card[data-id]').forEach(c => { const o = document.createElement('div'); o.className = 'ovl'; o.dataset.edit = c.dataset.k + ':' + c.dataset.id; c.appendChild(o); });
+  $('#editFab').textContent = edit ? '✅ إنهاء التعديل' : '✏️ وضع التعديل';
+}
 function applyTheme() {
   const r = document.documentElement.style;
-  r.setProperty('--primary', theme.primary); r.setProperty('--bg', theme.bg);
-  r.setProperty('--text', theme.text); r.setProperty('--card', theme.card);
+  const st = theme.style || 'kids'; document.documentElement.dataset.style = st;
+  r.setProperty('--primary', theme.primary);
+  ['bg', 'text', 'card'].forEach(k => st === 'modern' ? r.setProperty('--' + k, theme[k]) : r.removeProperty('--' + k));
   $('#navName').textContent = theme.name; $('#navEmoji').textContent = theme.emoji;
   $('#loginName').textContent = theme.name; $('#loginEmoji').textContent = theme.emoji;
   document.title = theme.name;
   const fbOk = !!theme.facebook && safeUrl(theme.facebook) !== '#';
   ['#navFb', '#loginFb'].forEach(i => { const a = $(i); if (fbOk) { a.href = safeUrl(theme.facebook); a.classList.remove('hidden'); } else a.classList.add('hidden'); });
-  const ok = !!theme.logo && imgOk(theme.logo);
-  [['#navLogo','#navEmoji'],['#loginLogo','#loginEmoji']].forEach(([i,e]) => {
+  [['#navLogo','#navEmoji'],['#loginLogo','#loginEmoji']].forEach(([i, e]) => {
     const img = $(i), em = $(e);
-    const fallback = () => { img.classList.add('hidden'); em.classList.remove('hidden'); };
-    if (ok) { img.onerror = fallback; img.src = theme.logo; img.classList.remove('hidden'); em.classList.add('hidden'); } else fallback();
+    img.onerror = () => { if (!img.dataset.d) { img.dataset.d = '1'; img.src = DEFAULT_LOGO; } else { img.classList.add('hidden'); em.classList.remove('hidden'); } };
+    delete img.dataset.d;
+    img.src = logoSrc(); img.classList.remove('hidden'); em.classList.add('hidden');
   });
+  $('#footName').textContent = theme.name;
 }
 
 /* ---------- تسجيل الدخول ---------- */
@@ -197,8 +327,8 @@ onAuthStateChanged(auth, u => {
   if (!u) { $('#login').classList.remove('hidden'); $('#appWrap').classList.add('hidden'); return; }
   isAdmin = (u.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase() && u.emailVerified;
   $('#login').classList.add('hidden'); $('#appWrap').classList.remove('hidden');
-  $('#avatar').src = u.photoURL || ''; $('#uname').textContent = u.displayName || u.email;
-  tab = 'home'; listen(); render();
+  { const av = $('#avatar'); if (u.photoURL) { av.src = u.photoURL; av.classList.remove('hidden'); } else av.classList.add('hidden'); } $('#uname').textContent = u.displayName || u.email;
+  tab = 'home'; animUntil = Date.now() + 1500; edit = false; $('#editFab').classList.toggle('hidden', !isAdmin); listen(); render();
 });
 
 /* ---------- قراءة البيانات لحظياً ---------- */
@@ -210,6 +340,7 @@ function listen() {
   unsubs.push(onSnapshot(doc(db, 'settings', 'theme'),
     s => { if (s.exists()) { theme = { ...theme, ...s.data() }; applyTheme(); schedule(); } },
     e => console.error('theme', e)));
+  unsubs.push(onSnapshot(doc(db, 'settings', 'texts'), s => { texts = s.exists() ? s.data() : {}; schedule(); }, e => console.error('texts', e)));
   unsubs.push(onSnapshot(doc(db, 'settings', 'grades'),
     s => { if (s.exists() && Array.isArray(s.data().list)) { grades = s.data().list; if (grade !== 'الكل' && !grades.includes(grade)) grade = 'الكل'; schedule(); } },
     e => console.error('grades', e)));
@@ -237,28 +368,36 @@ const gradeOk = i => grade === 'الكل' || i.grade === grade || i.grade === '�
 const chips = () => `<div class="chips">${['الكل', ...grades].map(g => `<button class="chip ${grade === g ? 'active' : ''}" data-grade="${esc(g)}">${esc(gl(g))}</button>`).join('')}</div>`;
 const empty = t => `<div class="empty">${t}</div>`;
 
-const videoCard = v => { const id = ytId(v.link); return `<div class="card">${id ? `<div class="vwrap"><iframe src="https://www.youtube-nocookie.com/embed/${id}" allowfullscreen loading="lazy"></iframe></div>` : ''}<div class="body"><span class="badge">${esc(gl(v.grade))}</span><h4>${esc(v.title)}</h4></div></div>`; };
-const courseCard = c => `<div class="card"><div class="icon">${esc(c.icon || '📘')}</div><div class="body"><span class="badge">${esc(gl(c.grade))}</span><h4>${esc(c.title)}</h4><p>${esc(c.description)}</p></div></div>`;
-const linkCard = (i, label) => `<div class="card"><div class="body"><span class="badge">${esc(gl(i.grade))}</span><h4>${esc(i.title)}</h4><br><a class="btn small" href="${safeUrl(i.link)}" target="_blank" rel="noopener">${label}</a></div></div>`;
+const videoCard = v => { const id = ytId(v.link); return `<div class="card" data-k="videos" data-id="${v.id}">${id ? `<div class="vwrap"><iframe src="https://www.youtube-nocookie.com/embed/${id}" allowfullscreen loading="lazy"></iframe></div>` : ''}<div class="body"><span class="badge">${esc(gl(v.grade))}</span><h4>${esc(v.title)}</h4></div></div>`; };
+const courseCard = c => `<div class="card" data-k="courses" data-id="${c.id}"><div class="icon">${esc(c.icon || '📘')}</div><div class="body"><span class="badge">${esc(gl(c.grade))}</span><h4>${esc(c.title)}</h4><p>${esc(c.description)}</p></div></div>`;
+const linkCard = (i, label, k) => `<div class="card" data-k="${k}" data-id="${i.id}"><div class="body"><span class="badge">${esc(gl(i.grade))}</span><h4>${esc(i.title)}</h4><br><a class="btn small" href="${safeUrl(i.link)}" target="_blank" rel="noopener">${label}</a></div></div>`;
 
 function viewHome() {
-  return `<div class="hero"><h1>العلوم بتبقى سهلة مع <em>مستر سعيد</em> ${esc(theme.emoji)}</h1>
-    <p>شرح مبسط لكل درس، حل تدريبات ونماذج امتحانات، ومراجعات سريعة قبل الامتحان.</p></div>
+  return `<section class="hero2">
+      <div>
+        <span class="pill">${tx('heroPill', '🔬 علوم المرحلة الابتدائية')}</span>
+        <h1>${tx('heroTitle', 'العلوم بتبقى سهلة مع')} <em>${tx('heroName', 'مستر سعيد')}</em></h1>
+        <p>${tx('heroDesc', 'شرح مبسط لكل درس، حل تدريبات ونماذج امتحانات، ومراجعات سريعة قبل الامتحان.')}</p>
+        <div class="h-btns"><button class="btn light" data-tab="videos">${tx('btn1', 'ابدأ المشاهدة 🎬')}</button><button class="btn ghost" data-tab="exams">${tx('btn2', 'الامتحانات 📝')}</button></div>
+      </div>
+      <img class="h-logo" src="${esc(logoSrc())}" alt="">
+    </section>
     <div class="stats">
       <div class="stat"><b>${data.videos.length}</b><span>فيديو</span></div>
       <div class="stat"><b>${data.courses.length}</b><span>كورس</span></div>
       <div class="stat"><b>${data.files.length}</b><span>ملف</span></div>
       <div class="stat"><b>${data.exams.length}</b><span>امتحان</span></div>
     </div>
-    <h3>أحدث الفيديوهات</h3>
+    ${grades.length ? `<h2>${tx('picksTitle', 'اختار صفك')}</h2><div class="picks">${grades.map(g => `<button class="pick" data-pick="${esc(g)}">🎓 ${esc(gl(g))}</button>`).join('')}</div>` : ''}
+    <h2>${tx('latestTitle', 'أحدث الفيديوهات')}</h2>
     ${data.videos.length ? `<div class="grid">${data.videos.slice(0, 3).map(videoCard).join('')}</div>` : empty('لسه مفيش فيديوهات. هتظهر هنا أول ما تتضاف.')}`;
 }
 function viewList(key, title, cardFn, emptyMsg) {
   const items = data[key].filter(gradeOk);
-  return `<h2>${title}</h2>${chips()}${items.length ? `<div class="grid">${items.map(cardFn).join('')}</div>` : empty(emptyMsg)}`;
+  return `<h2>${title}</h2>${chips()}${items.length ? `<div class="grid">${items.map(cardFn).join('')}</div>` : empty(emptyMsg)}${edit ? `<button class="addcard" data-new="${key}">➕ إضافة ${SCHEMA[key].label}</button>` : ''}`;
 }
 function viewContact() {
-  return `<h2>💬 تواصل مع مستر سعيد</h2>
+  return `<h2>${tx('contactTitle', '💬 تواصل مع مستر سعيد')}</h2>
     <form class="box" id="contactForm">
       <input name="name" placeholder="اسمك" required value="${esc(user.displayName || '')}">
       <textarea name="message" placeholder="اكتب رسالتك أو سؤالك..." required></textarea>
@@ -280,20 +419,7 @@ function viewAdmin() {
   const t = theme;
   return `<h2>⚙️ لوحة التحكم</h2>
     <h3>🎨 شكل المنصة</h3>
-    <form class="box" id="themeForm">
-      <input name="name" value="${esc(t.name)}" placeholder="اسم المنصة" required>
-      <input name="emoji" value="${esc(t.emoji)}" placeholder="إيموجي الشعار" maxlength="4" required>
-      <input name="logo" value="${esc(t.logo || '')}" placeholder="صورة الشعار (اختياري): رابط الصورة أو اسم ملف مثل logo.png">
-      <p class="note">لو كتبت صورة، هتظهر بدل الإيموجي. سيبها فاضية لو عايز الإيموجي.</p>
-      <input name="facebook" type="url" value="${esc(t.facebook || '')}" placeholder="رابط صفحة الفيسبوك (اختياري) https://facebook.com/...">
-      <div class="colors">
-        <label>اللون الأساسي<input type="color" name="primary" value="${t.primary}"></label>
-        <label>الخلفية<input type="color" name="bg" value="${t.bg}"></label>
-        <label>لون الكروت<input type="color" name="card" value="${t.card}"></label>
-        <label>لون النص<input type="color" name="text" value="${t.text}"></label>
-      </div>
-      <button class="btn" type="submit">حفظ الشكل</button>
-    </form>
+    ${themeForm()}
     <h3>🎓 الصفوف</h3>
     <form class="box" id="gradeForm">
       <input name="g" placeholder="اسم الصف (مثال: سادسة ابتدائي)" maxlength="30" required>
@@ -309,25 +435,38 @@ function viewAdmin() {
 
 function render() {
   const tabs = [...TABS, ...(isAdmin ? [['admin', '⚙️ الإدارة']] : [])];
-  $('#tabs').innerHTML = tabs.map(([k, l]) => `<button class="tab ${tab === k ? 'active' : ''}" data-tab="${k}">${l}</button>`).join('');
+  $('#tabs').innerHTML = tabs.map(([k, l]) => `<button class="tab ${tab === k ? 'active' : ''}" data-tab="${k}">${tx('tab_' + k, l)}</button>`).join('');
   const views = {
     home: viewHome,
-    videos: () => viewList('videos', '🎬 الفيديوهات', videoCard, 'مفيش فيديوهات للصف ده لسه.'),
-    courses: () => viewList('courses', '📚 الكورسات', courseCard, 'مفيش كورسات للصف ده لسه.'),
-    files: () => viewList('files', '📁 الملفات', i => linkCard(i, 'فتح / تحميل 📥'), 'مفيش ملفات للصف ده لسه.'),
-    exams: () => viewList('exams', '📝 الامتحانات', i => linkCard(i, 'فتح الامتحان'), 'مفيش امتحانات للصف ده لسه.'),
+    videos: () => viewList('videos', tx('videosTitle', '🎬 الفيديوهات'), videoCard, 'مفيش فيديوهات للصف ده لسه.'),
+    courses: () => viewList('courses', tx('coursesTitle', '📚 الكورسات'), courseCard, 'مفيش كورسات للصف ده لسه.'),
+    files: () => viewList('files', tx('filesTitle', '📁 الملفات'), i => linkCard(i, 'فتح / تحميل 📥', 'files'), 'مفيش ملفات للصف ده لسه.'),
+    exams: () => viewList('exams', tx('examsTitle', '📝 الامتحانات'), i => linkCard(i, 'فتح الامتحان', 'exams'), 'مفيش امتحانات للصف ده لسه.'),
     contact: viewContact,
     admin: () => isAdmin ? viewAdmin() : viewHome()
   };
-  $('#app').innerHTML = (views[tab] || viewHome)();
+  $('#app').innerHTML = (edit ? '<div class="hint">✏️ وضع التعديل: اضغط على أي عنصر أو نص لتعديله (التابات: دبل كليك)</div>' : '') + (views[tab] || viewHome)();
+  afterRender();
 }
 
 /* ---------- الأحداث ---------- */
 document.addEventListener('click', async e => {
-  const t = e.target.closest('[data-tab],[data-grade],[data-del],[data-delgrade]');
+  const cl = q => e.target.closest(q);
+  if (e.target.id === 'editFab') { edit = !edit; render(); return; }
+  if (e.target.id === 'mclose' || e.target.id === 'modal') return closeModal();
+  if (isAdmin && edit && !cl('#modal')) {
+    const ov = cl('.ovl'); if (ov) return openItem(ov.dataset.edit);
+    const nw = cl('[data-new]'); if (nw) return openItem(nw.dataset.new);
+    const x = cl('.tx'); if (x && !x.closest('.tab')) return openText(x);
+    if (cl('.brand')) { e.preventDefault(); return openModal('🎨 شكل المنصة', themeForm()); }
+  }
+  const rt = cl('[data-resettx]');
+  if (rt && isAdmin) { try { await setDoc(doc(db, 'settings', 'texts'), { [rt.dataset.resettx]: '' }, { merge: true }); toast('رجع النص الأصلي'); closeModal(); } catch (err) { toast('فشل: ' + err.code); } return; }
+  const t = e.target.closest('[data-tab],[data-grade],[data-pick],[data-del],[data-delgrade]');
   if (!t) return;
-  if (t.dataset.tab) { tab = t.dataset.tab; render(); window.scrollTo(0, 0); }
-  else if (t.dataset.grade) { grade = t.dataset.grade; render(); }
+  if (t.dataset.tab) { tab = t.dataset.tab; animUntil = Date.now() + 900; render(); window.scrollTo(0, 0); }
+  else if (t.dataset.grade) { grade = t.dataset.grade; animUntil = Date.now() + 900; render(); }
+  else if (t.dataset.pick !== undefined) { tab = 'videos'; grade = t.dataset.pick; animUntil = Date.now() + 900; render(); window.scrollTo(0, 0); }
   else if (t.dataset.delgrade !== undefined && isAdmin) {
     const g = grades[+t.dataset.delgrade];
     if (g === undefined || !confirm('حذف صف "' + g + '"؟ المحتوى هيفضل موجود.')) return;
@@ -337,7 +476,7 @@ document.addEventListener('click', async e => {
   else if (t.dataset.del && isAdmin) {
     if (!confirm('متأكد إنك عايز تحذف؟')) return;
     const [col, id] = t.dataset.del.split(':');
-    try { await deleteDoc(doc(db, col, id)); toast('تم الحذف'); } catch (err) { toast('فشل الحذف: ' + err.code); }
+    try { await deleteDoc(doc(db, col, id)); toast('تم الحذف'); closeModal(); } catch (err) { toast('فشل الحذف: ' + err.code); }
   }
 });
 
@@ -353,6 +492,12 @@ document.addEventListener('submit', async e => {
       }
       await addDoc(collection(db, k), { ...fd, createdAt: serverTimestamp() });
       f.reset(); toast('تمت الإضافة ✅');
+    } else if (f.dataset.save && isAdmin) {
+      const [k, id] = f.dataset.save.split(':');
+      if (fd.link) { if (safeUrl(fd.link) === '#') return toast('الرابط مش صحيح'); if (k === 'videos' && !ytId(fd.link)) return toast('ده مش رابط يوتيوب صحيح'); }
+      await setDoc(doc(db, k, id), fd, { merge: true }); toast('تم الحفظ ✅');
+    } else if (f.id === 'textForm' && isAdmin) {
+      await setDoc(doc(db, 'settings', 'texts'), { [fd.k]: fd.v }, { merge: true }); toast('تم الحفظ ✅');
     } else if (f.id === 'gradeForm' && isAdmin) {
       const g = (fd.g || '').trim();
       if (!g || g === 'الكل' || g === 'عام') return toast('اكتب اسم صف مختلف');
@@ -367,9 +512,12 @@ document.addEventListener('submit', async e => {
       await addDoc(collection(db, 'messages'), { name: fd.name, message: fd.message, email: user.email, uid: user.uid, createdAt: serverTimestamp() });
       f.reset(); toast('وصلت رسالتك ✅');
     }
+    closeModal();
   } catch (err) { toast(err.code === 'permission-denied' ? 'مفيش صلاحية. اتأكد من القواعد وإيميل الأدمن' : 'حصل خطأ: ' + err.code); }
 });
 
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('dblclick', e => { if (!(isAdmin && edit)) return; const x = e.target.closest('.tab .tx'); if (x) openText(x); });
 applyTheme();
 </script>
 </body>
