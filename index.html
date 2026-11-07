@@ -264,7 +264,7 @@ const ytId = u => { const m = String(u).match(/(?:v=|youtu\.be\/|embed\/|shorts\
 const toast = t => { const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2500); };
 
 let user = null, isAdmin = false, tab = 'home', grade = 'الكل', pending = false, unsubs = [], edit = false, texts = {}, animUntil = Date.now() + 1500;
-let stuGroup = '', profile = null, memberLoaded = false, picked = false, access = {}, mySubs = [], allSubs = [], members = [], pay = { info: '' }, adminSec = 'theme', stuGrade = null, cUnsubs = [], parts = {}, wt = 0;
+let grpErr = '', stuGroup = '', profile = null, memberLoaded = false, picked = false, access = {}, mySubs = [], allSubs = [], members = [], pay = { info: '' }, adminSec = 'theme', stuGrade = null, cUnsubs = [], parts = {}, wt = 0;
 const DEFAULT_LOGO = 'data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2314b8a6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234f46e5%22/%3E%3C/linearGradient%3E%3CclipPath%20id%3D%22c%22%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22/%3E%3C/clipPath%3E%3C/defs%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20x%3D%22100%22%20y%3D%22326%22%20width%3D%22320%22%20height%3D%22110%22%20fill%3D%22%23fff%22%20clip-path%3D%22url%28%23c%29%22/%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%2222%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%234f46e5%22%20stroke-width%3D%2214%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%22226%2C350%20204%2C372%20226%2C394%22/%3E%3Cline%20x1%3D%22266%22%20y1%3D%22346%22%20x2%3D%22246%22%20y2%3D%22398%22/%3E%3Cpolyline%20points%3D%22286%2C350%20308%2C372%20286%2C394%22/%3E%3C/g%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22178%22%20r%3D%229%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Ccircle%20cx%3D%22272%22%20cy%3D%22248%22%20r%3D%227%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.85%22/%3E%3Ccircle%20cx%3D%22236%22%20cy%3D%22284%22%20r%3D%2211%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Cpath%20d%3D%22M398%2092l7%2018%2018%207-18%207-7%2018-7-18-18-7%2018-7z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3C/svg%3E';
 const imgOk = u => /^[\w.-]+\.(png|jpe?g|webp|svg|gif)$/i.test(u) || safeUrl(u) !== '#';
 const logoSrc = () => (theme.logo && imgOk(theme.logo)) ? theme.logo : DEFAULT_LOGO;
@@ -429,7 +429,7 @@ function gate() {
 }
 onSnapshot(doc(db, 'settings', 'grades'), s => { if (s.exists() && Array.isArray(s.data().list)) { grades = s.data().list; if (!user && $('.login-box').classList.contains('reg')) renderReg(); } }, () => {});
 
-onSnapshot(collection(db, 'groups'), s => { data.groups = s.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => ts(a) - ts(b)); if (!user && $('.login-box').classList.contains('reg')) renderReg(); else schedule(); }, () => {});
+onSnapshot(collection(db, 'groups'), s => { data.groups = s.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => ts(a) - ts(b)); if (!user && $('.login-box').classList.contains('reg')) renderReg(); else schedule(); }, e => { grpErr = e.code || 'error'; console.error('groups', e); });
 
 function listen() {
   const uid = user.uid, mref = doc(db, 'members', uid);
@@ -534,7 +534,7 @@ function adminForm(k) {
 const SECS = [['theme', '🎨 الشكل'], ['grades', '🎓 الصفوف'], ['videos', '🎬 فيديوهات'], ['courses', '📚 كورسات'], ['files', '📁 ملفات'], ['exams', '📝 امتحانات'], ['groups', '👥 المجموعات'], ['pay', '💳 الدفع'], ['msgs', '📩 الرسائل']];
 function secHtml(k) {
   if (k === 'theme') return themeForm();
-  if (SCHEMA[k]) return adminForm(k);
+  if (SCHEMA[k]) return (k === 'groups' && grpErr ? '<div class="err">⚠️ المجموعات مش بتتحمل (' + esc(grpErr) + '). انشر القواعد الجديدة من ملف firestore-rules.txt.</div>' : '') + adminForm(k);
   if (k === 'grades') return `<form class="box" id="gradeForm"><input name="g" placeholder="اسم الصف (مثال: سادسة ابتدائي)" maxlength="30" required><button class="btn" type="submit">إضافة صف</button></form><div class="list">${grades.map((g, i) => `<div class="row"><div class="t">${esc(gl(g))}</div><button class="btn red small" data-delgrade="${i}">حذف</button></div>`).join('')}</div><p class="note">حذف الصف مبيمسحش المحتوى بتاعه.</p>`;
   if (k === 'pay') return `<h3>💳 بيانات استلام الفلوس</h3><form class="box" id="payForm"><textarea name="info" placeholder="مثال:&#10;فودافون كاش: 010xxxxxxxx&#10;إنستا باي: name@instapay&#10;الاشتراك: 100 جنيه شهرياً">${esc(pay.info)}</textarea><button class="btn" type="submit">حفظ</button></form><p class="note">النص ده بيظهر للطالب لما يدوس على صف مقفول. الطالب بيحوّل ويبعتلك رقم العملية، وإنت بتقبله من قسم المتابعة.</p>`;
   return `<h3>📩 الرسائل (${data.messages.length})</h3>${data.messages.length ? data.messages.map(m => `<div class="msg"><b>${esc(m.name)}</b> <small>(${esc(m.email)})</small><p>${esc(m.message)}</p><button class="btn red small" data-del="messages:${m.id}">حذف</button></div>`).join('') : empty('مفيش رسائل.')}`;
@@ -552,6 +552,7 @@ function stuPanel() {
     <div class="list">${pend.map(p => `<div class="row"><div><div class="t">${esc(fullName(members.find(x => x.id === p.uid) || { name: p.name }))}</div><div class="s">${esc(p.email)} · رقم العملية: ${esc(p.ref)}</div></div><div class="acts"><button class="btn small" data-ok="${p.id}">قبول ✅</button><button class="btn red small" data-no="${p.id}">رفض</button></div></div>`).join('') || empty('مفيش طلبات جديدة.')}</div>
     <h3>✅ طلبة ${esc(gl(g))} (${act.length})</h3>
     <div class="list">${act.map(m => `<div class="row"><div><div class="t">${esc(fullName(m))}</div><div class="s">${esc(m.email)}${m.profile ? ` · ${esc(m.profile.phone)} · ولي الأمر: ${esc(m.profile.parentPhone)}${m.profile.groupName ? ' · 📅 ' + esc(m.profile.groupName) : ''}` : ''}</div></div><button class="btn red small" data-kick="${m.id}">طرد</button></div>`).join('') || empty('مفيش طلبة مشتركين لسه.')}</div>
+    ${(() => { const u = members.filter(m => m.profile && m.profile.grade === g && !(m.access && m.access[g] === true) && inG(m)); return `<h3>🆕 مسجّلين بدون اشتراك (${u.length})</h3><div class="list">${u.map(m => `<div class="row"><div><div class="t">${esc(fullName(m))}</div><div class="s">${esc(m.profile.phone)}${m.profile.groupName ? ' · 📅 ' + esc(m.profile.groupName) : ''}</div></div><button class="btn small" data-grant="${m.id}">قبول ✅</button></div>`).join('') || empty('مفيش.')}</div>`; })()}
     <p class="note" style="margin-top:10px">إجمالي المسجلين في المنصة: ${members.length}</p>`;
 }
 function viewAdmin() {
@@ -588,7 +589,7 @@ document.addEventListener('click', async e => {
   }
   const rt = cl('[data-resettx]');
   if (rt && isAdmin) { try { await setDoc(doc(db, 'settings', 'texts'), { [rt.dataset.resettx]: '' }, { merge: true }); toast('رجع النص الأصلي'); closeModal(); } catch (err) { toast('فشل: ' + err.code); } return; }
-  const t = e.target.closest('[data-tab],[data-grade],[data-pick],[data-del],[data-delgrade],[data-sec],[data-stu],[data-ok],[data-no],[data-kick],[data-regstart],[data-reglogin],[data-regback],[data-regout],[data-grp],[data-chgrp]');
+  const t = e.target.closest('[data-tab],[data-grade],[data-pick],[data-del],[data-delgrade],[data-sec],[data-stu],[data-ok],[data-no],[data-kick],[data-regstart],[data-reglogin],[data-regback],[data-regout],[data-grp],[data-chgrp],[data-grant]');
   if (!t) return;
   if (t.dataset.tab) { tab = t.dataset.tab; animUntil = Date.now() + 900; render(); window.scrollTo(0, 0); }
   else if (t.dataset.grade) { grade = t.dataset.grade; animUntil = Date.now() + 900; render(); }
@@ -608,6 +609,7 @@ document.addEventListener('click', async e => {
       toast(t.dataset.ok ? 'تم قبول الطالب ✅' : 'تم رفض الطلب');
     } catch (err) { toast('فشل: ' + err.code); }
   }
+  else if (isAdmin && t.dataset.grant) { try { await setDoc(doc(db, 'members', t.dataset.grant), { access: { [stuGrade || grades[0]]: true } }, { merge: true }); toast('تم قبول الطالب ✅'); } catch (err) { toast('فشل: ' + err.code); } }
   else if (isAdmin && t.dataset.kick) {
     if (!confirm('طرد الطالب من الصف ده؟')) return;
     try { await setDoc(doc(db, 'members', t.dataset.kick), { access: { [stuGrade || grades[0]]: false } }, { merge: true }); toast('تم الطرد'); } catch (err) { toast('فشل: ' + err.code); }
