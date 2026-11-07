@@ -204,7 +204,7 @@ img,iframe,video{max-width:100%}
   <div class="l-side">
     <div class="l-brand"><span class="e hidden" id="loginEmoji">🔬</span><img class="logo hidden" id="loginLogo" alt=""><span id="loginName">Saeed Code Science</span></div>
     <h1>العلوم بتبقى سهلة وممتعة</h1>
-    <p>شرح مبسط لكل درس، حل تدريبات ونماذج امتحانات، ومراجعات سريعة قبل الامتحان.</p>
+    <p>شرح مبسط لكل درس، حل تدريبات ونماذج امتحانات، ومراجعات سريعة قبل الامتحان للمرحلة الابتدائية.</p>
     <ul class="feat"><li>🎬 فيديوهات شرح لكل درس</li><li>📝 نماذج امتحانات وتدريبات</li><li>⚡ مراجعات سريعة قبل الامتحان</li></ul>
   </div>
   <div class="l-main">
@@ -264,23 +264,23 @@ const ytId = u => { const m = String(u).match(/(?:v=|youtu\.be\/|embed\/|shorts\
 const toast = t => { const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2500); };
 
 let user = null, isAdmin = false, tab = 'home', grade = 'الكل', pending = false, unsubs = [], edit = false, texts = {}, animUntil = Date.now() + 1500;
-let profile = null, memberLoaded = false, picked = false, access = {}, mySubs = [], allSubs = [], members = [], pay = { info: '' }, adminSec = 'theme', stuGrade = null, cUnsubs = [], parts = {}, wt = 0;
+let stuGroup = '', profile = null, memberLoaded = false, picked = false, access = {}, mySubs = [], allSubs = [], members = [], pay = { info: '' }, adminSec = 'theme', stuGrade = null, cUnsubs = [], parts = {}, wt = 0;
 const DEFAULT_LOGO = 'data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2314b8a6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234f46e5%22/%3E%3C/linearGradient%3E%3CclipPath%20id%3D%22c%22%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22/%3E%3C/clipPath%3E%3C/defs%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22112%22%20fill%3D%22url%28%23g%29%22/%3E%3Crect%20x%3D%22100%22%20y%3D%22326%22%20width%3D%22320%22%20height%3D%22110%22%20fill%3D%22%23fff%22%20clip-path%3D%22url%28%23c%29%22/%3E%3Cpath%20d%3D%22M206%20108h100v22h-14v84l78%20128c18%2030-4%2068-39%2068H181c-35%200-57-38-39-68l78-128v-84h-14z%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%2222%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22/%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%234f46e5%22%20stroke-width%3D%2214%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%22226%2C350%20204%2C372%20226%2C394%22/%3E%3Cline%20x1%3D%22266%22%20y1%3D%22346%22%20x2%3D%22246%22%20y2%3D%22398%22/%3E%3Cpolyline%20points%3D%22286%2C350%20308%2C372%20286%2C394%22/%3E%3C/g%3E%3Ccircle%20cx%3D%22256%22%20cy%3D%22178%22%20r%3D%229%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Ccircle%20cx%3D%22272%22%20cy%3D%22248%22%20r%3D%227%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.85%22/%3E%3Ccircle%20cx%3D%22236%22%20cy%3D%22284%22%20r%3D%2211%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3Cpath%20d%3D%22M398%2092l7%2018%2018%207-18%207-7%2018-7-18-18-7%2018-7z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.9%22/%3E%3C/svg%3E';
 const imgOk = u => /^[\w.-]+\.(png|jpe?g|webp|svg|gif)$/i.test(u) || safeUrl(u) !== '#';
 const logoSrc = () => (theme.logo && imgOk(theme.logo)) ? theme.logo : DEFAULT_LOGO;
 let theme = { logo: '', facebook: '', style: 'kids', primary: '#4f46e5', bg: '#f5f7fb', text: '#0f172a', card: '#ffffff', name: 'Saeed Code Science', emoji: '🔬' };
-const data = { videos: [], courses: [], files: [], exams: [], messages: [] };
+const data = { videos: [], courses: [], files: [], exams: [], messages: [], groups: [] };
 
 let grades = ['رابعة', 'خامسة'];
 const LEGACY = { 'رابعة': 'رابعة ابتدائي', 'خامسة': 'خامسة ابتدائي' };
 const gl = g => g === 'عام' ? 'عام (كل الصفوف)' : (LEGACY[g] || g);
 const SCHEMA = {
   videos:  { label: 'فيديو',  fields: [['title','عنوان الفيديو','text'], ['link','رابط الفيديو على يوتيوب','url'], ['grade','الصف','grade']] },
-group: { label: 'مجموعات',   fields: [['title','اسم المجموعة','text'], ['description','وصف قصير','textarea'], ['grade','الصف','grade']] },
   courses: { label: 'كورس',   fields: [['title','اسم الكورس','text'], ['description','وصف قصير','textarea'], ['icon','إيموجي (مثال 🌱)','text'], ['grade','الصف','grade']] },
   files:   { label: 'ملف',    fields: [['title','اسم الملف','text'], ['link','رابط الملف (Google Drive)','url'], ['grade','الصف','grade']] },
   exams:   { label: 'امتحان', fields: [['title','اسم الامتحان','text'], ['link','رابط الامتحان (Google Drive)','url'], ['grade','الصف','grade']] }
 };
+SCHEMA.groups = { label: 'مجموعة', fields: [['title', 'اسم المجموعة (مثال: مجموعة السبت)', 'text'], ['time', 'المعاد (مثال: السبت والثلاثاء 5 م)', 'text'], ['grade', 'الصف', 'grade']] };
 const TABS = [['home','🏠 الرئيسية'],['videos','🎬 الفيديوهات'],['courses','📚 الكورسات'],['files','📁 الملفات'],['exams','📝 الامتحانات'],['contact','💬 تواصل']];
 
 const tx = (k, d) => `<span class="tx" data-tx="${k}">${esc(texts[k] || d)}</span>`;
@@ -358,7 +358,7 @@ $('#btnLogin').onclick = async () => {
 $('#btnOut').onclick = () => signOut(auth);
 
 onAuthStateChanged(auth, u => {
-  unsubs.forEach(f => f()); unsubs = []; cUnsubs.forEach(f => f()); cUnsubs = []; parts = {}; for (const k in data) data[k] = []; access = {}; mySubs = []; allSubs = []; members = [];
+  unsubs.forEach(f => f()); unsubs = []; cUnsubs.forEach(f => f()); cUnsubs = []; parts = {}; for (const k of ['videos', 'courses', 'files', 'exams', 'messages']) data[k] = []; access = {}; mySubs = []; allSubs = []; members = [];
   user = u;
   if (!u) { reg.d = {}; reg.step = 1; reg.pre = 0; reg.shown = 0; profile = null; memberLoaded = false; picked = false; $('.login-box').classList.remove('reg'); $('#login').classList.remove('hidden'); $('#appWrap').classList.add('hidden'); return; }
   isAdmin = (u.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase() && u.emailVerified;
@@ -391,14 +391,26 @@ function paywall(g) {
 const GOV = ['القاهرة','الجيزة','الإسكندرية','الدقهلية','الشرقية','القليوبية','الغربية','المنوفية','البحيرة','كفر الشيخ','دمياط','بورسعيد','الإسماعيلية','السويس','الفيوم','بني سويف','المنيا','أسيوط','سوهاج','قنا','الأقصر','أسوان','البحر الأحمر','الوادي الجديد','مطروح','شمال سيناء','جنوب سيناء'];
 const reg = { step: 1, d: {}, pre: 0, shown: 0 };
 const phoneOk = p => /^01[0-25]\d{8}$/.test(p || '');
-const cleanProfile = () => Object.fromEntries(['first', 'middle', 'last', 'gender', 'grade', 'phone', 'parentPhone', 'governorate'].map(k => [k, String(reg.d[k] || '').trim()]));
+const cleanProfile = () => { const p = Object.fromEntries(['first', 'middle', 'last', 'gender', 'grade', 'phone', 'parentPhone', 'governorate'].map(k => [k, String(reg.d[k] || '').trim()])); const g = data.groups.find(x => x.id === reg.d.groupId); if (g) Object.assign(p, { groupId: g.id, groupName: g.title, groupTime: g.time }); return p; };
+const grp = d => data.groups.find(x => x.id === d.groupId);
+function myGroupCard() {
+  if (isAdmin || !profile || !profile.grade) return '';
+  const has = data.groups.some(x => x.grade === profile.grade);
+  if (!profile.groupId && !has) return '';
+  const gp = data.groups.find(x => x.id === profile.groupId) || { title: profile.groupName, time: profile.groupTime };
+  return `<div class="pay" style="margin:0 0 14px"><b>📅 ${profile.groupId ? 'مجموعتك: ' + esc(gp.title) : 'اختار مجموعتك'}</b>${profile.groupId && gp.time ? `<div class="note">⏰ ${esc(gp.time)}</div>` : ''}${has ? `<button class="btn small" data-chgrp style="margin-top:8px">${profile.groupId ? 'تغيير المجموعة' : 'اختيار المجموعة'}</button>` : ''}</div>`;
+}
+function openGroup() {
+  const gs = data.groups.filter(x => x.grade === (profile && profile.grade));
+  openModal('📅 اختار مجموعتك', gs.length ? `<form class="box" id="grpForm"><select name="groupId" required>${gs.map(x => `<option value="${x.id}" ${profile.groupId === x.id ? 'selected' : ''}>${esc(x.title)} — ${esc(x.time)}</option>`).join('')}</select><button class="btn" type="submit">حفظ</button></form>` : empty('مفيش مجموعات متاحة لصفك دلوقتي.'));
+}
 const fullName = m => m.profile ? [m.profile.first, m.profile.middle, m.profile.last].filter(Boolean).join(' ') : m.name;
 function regHtml() {
   const d = reg.d, st = reg.step, opt = (list, v) => list.map(x => `<option value="${esc(x)}" ${v === x ? 'selected' : ''}>${esc(gl(x))}</option>`).join('');
   const dots = ['البيانات الشخصية', 'معلومات التواصل', 'التحقق'].map((l, i) => `<div class="stp ${st === i + 1 ? 'on' : ''} ${st > i + 1 ? 'done' : ''}"><b>${st > i + 1 ? '✓' : i + 1}</b><span>${l}</span></div>`).join('');
-  const body = st === 1 ? `<input name="first" placeholder="الاسم الأول *" value="${esc(d.first)}" required><input name="middle" placeholder="الاسم الأوسط *" value="${esc(d.middle)}" required><input name="last" placeholder="الاسم الأخير *" value="${esc(d.last)}" required><div class="gen"><label><input type="radio" name="gender" value="ذكر" ${d.gender === 'ذكر' ? 'checked' : ''} required> ذكر</label><label><input type="radio" name="gender" value="أنثى" ${d.gender === 'أنثى' ? 'checked' : ''}> أنثى</label></div><select name="grade" required><option value="">السنة الدراسية *</option>${opt(grades, d.grade)}</select>`
+  const body = st === 1 ? `<input name="first" placeholder="الاسم الأول *" value="${esc(d.first)}" required><input name="middle" placeholder="الاسم الأوسط *" value="${esc(d.middle)}" required><input name="last" placeholder="الاسم الأخير *" value="${esc(d.last)}" required><div class="gen"><label><input type="radio" name="gender" value="ذكر" ${d.gender === 'ذكر' ? 'checked' : ''} required> ذكر</label><label><input type="radio" name="gender" value="أنثى" ${d.gender === 'أنثى' ? 'checked' : ''}> أنثى</label></div><select name="grade" required><option value="">السنة الدراسية *</option>${opt(grades, d.grade)}</select>${(() => { const gs = data.groups.filter(x => x.grade === d.grade); return gs.length ? `<select name="groupId" required><option value="">المجموعة والمعاد *</option>${gs.map(x => `<option value="${x.id}" ${d.groupId === x.id ? 'selected' : ''}>${esc(x.title)} — ${esc(x.time)}</option>`).join('')}</select>` : ''; })()}`
     : st === 2 ? `<input name="phone" type="tel" inputmode="numeric" maxlength="11" placeholder="رقم موبايل الطالب *" value="${esc(d.phone)}" required><input name="parentPhone" type="tel" inputmode="numeric" maxlength="11" placeholder="رقم موبايل ولي الأمر *" value="${esc(d.parentPhone)}" required><select name="governorate" required><option value="">المحافظة *</option>${opt(GOV, d.governorate)}</select>`
-    : `<div class="sum">👤 ${esc([d.first, d.middle, d.last].join(' '))}<br>${esc(d.gender)} · ${esc(gl(d.grade))}<br>📱 ${esc(d.phone)} · ولي الأمر ${esc(d.parentPhone)}<br>📍 ${esc(d.governorate)}</div><p class="note" style="margin-bottom:12px">هنتأكد من هويتك بحساب جوجل، وبعدها الحساب يتفتح على طول.</p>`;
+    : `<div class="sum">👤 ${esc([d.first, d.middle, d.last].join(' '))}<br>${esc(d.gender)} · ${esc(gl(d.grade))}<br>📱 ${esc(d.phone)} · ولي الأمر ${esc(d.parentPhone)}<br>📍 ${esc(d.governorate)}${grp(d) ? `<br>📅 ${esc(grp(d).title)} — ${esc(grp(d).time)}` : ''}</div><p class="note" style="margin-bottom:12px">هنتأكد من هويتك بحساب جوجل، وبعدها الحساب يتفتح على طول.</p>`;
   return `<h2>إنشاء حساب جديد</h2><p class="note" style="margin-bottom:14px">${user ? 'كمّل بياناتك عشان تدخل المنصة.' : 'أدخل بياناتك بشكل صحيح.'}</p><div class="steps">${dots}</div>
     <form id="regForm">${body}<button class="btn" style="width:100%" type="submit">${st < 3 ? 'التالي' : user ? 'حفظ بياناتي ✅' : 'إنشاء الحساب بحساب جوجل'}</button>${st > 1 ? '<button type="button" class="btn-alt" data-regback>السابق</button>' : ''}</form>
     ${user ? '<button class="linkbtn" data-regout>تسجيل خروج</button>' : '<button class="linkbtn" data-reglogin>عندك حساب؟ سجّل دخول</button>'}`;
@@ -416,6 +428,8 @@ function gate() {
   }
 }
 onSnapshot(doc(db, 'settings', 'grades'), s => { if (s.exists() && Array.isArray(s.data().list)) { grades = s.data().list; if (!user && $('.login-box').classList.contains('reg')) renderReg(); } }, () => {});
+
+onSnapshot(collection(db, 'groups'), s => { data.groups = s.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => ts(a) - ts(b)); if (!user && $('.login-box').classList.contains('reg')) renderReg(); else schedule(); }, () => {});
 
 function listen() {
   const uid = user.uid, mref = doc(db, 'members', uid);
@@ -483,7 +497,7 @@ function viewHome() {
       </div>
       <img class="h-logo" src="${esc(logoSrc())}" alt="">
     </section>
-    <div class="stats">
+    ${myGroupCard()}<div class="stats">
       <div class="stat"><b>${data.videos.length}</b><span>فيديو</span></div>
       <div class="stat"><b>${data.courses.length}</b><span>كورس</span></div>
       <div class="stat"><b>${data.files.length}</b><span>ملف</span></div>
@@ -513,11 +527,11 @@ function adminForm(k) {
     t === 'textarea' ? `<textarea name="${n}" placeholder="${ph}" required></textarea>` :
     t === 'grade' ? `<select name="${n}" required>${[...grades, 'عام'].map(g => `<option value="${esc(g)}">${esc(gl(g))}</option>`).join('')}</select>` :
     `<input name="${n}" type="${t}" placeholder="${ph}" required>`).join('');
-  const rows = data[k].map(i => `<div class="row"><div><div class="t">${esc(i.title)}</div><div class="s">${esc(gl(i.grade))}</div></div><button class="btn red small" data-del="${k}:${i.id}">حذف</button></div>`).join('');
+  const rows = data[k].map(i => `<div class="row"><div><div class="t">${esc(i.title)}</div><div class="s">${esc(gl(i.grade))}${i.time ? ' · ' + esc(i.time) : ''}</div></div><button class="btn red small" data-del="${k}:${i.id}">حذف</button></div>`).join('');
   return `<h3>➕ إضافة ${s.label}</h3><form class="box" data-add="${k}">${fields}<button class="btn" type="submit">إضافة</button></form>
     ${data[k].length ? `<div class="list">${rows}</div>` : ''}`;
 }
-const SECS = [['theme', '🎨 الشكل'], ['grades', '🎓 الصفوف'], ['videos', '🎬 فيديوهات'], ['courses', '📚 كورسات'], ['files', '📁 ملفات'], ['exams', '📝 امتحانات'], ['pay', '💳 الدفع'], ['msgs', '📩 الرسائل']];
+const SECS = [['theme', '🎨 الشكل'], ['grades', '🎓 الصفوف'], ['videos', '🎬 فيديوهات'], ['courses', '📚 كورسات'], ['files', '📁 ملفات'], ['exams', '📝 امتحانات'], ['groups', '👥 المجموعات'], ['pay', '💳 الدفع'], ['msgs', '📩 الرسائل']];
 function secHtml(k) {
   if (k === 'theme') return themeForm();
   if (SCHEMA[k]) return adminForm(k);
@@ -529,12 +543,15 @@ function stuPanel() {
   if (!grades.length) return empty('أضف صف الأول من قسم الصفوف.');
   const g = grades.includes(stuGrade) ? stuGrade : grades[0]; stuGrade = g;
   const has = x => members.filter(m => m.access && m.access[x] === true);
-  const pend = allSubs.filter(x => x.grade === g && x.status === 'pending'), act = has(g);
-  return `<div class="chips">${grades.map(x => `<button class="chip ${x === g ? 'active' : ''}" data-stu="${esc(x)}">${esc(gl(x))} (${has(x).length})</button>`).join('')}</div>
+  const gsr = data.groups.filter(x => x.grade === g), sg = gsr.some(x => x.id === stuGroup) ? stuGroup : '';
+  const inG = m => !sg || (m && m.profile && m.profile.groupId === sg);
+  const pend = allSubs.filter(x => x.grade === g && x.status === 'pending' && inG(members.find(y => y.id === x.uid))), act = has(g).filter(inG);
+  const gchips = gsr.length ? `<div class="chips"><button class="chip ${!sg ? 'active' : ''}" data-grp="">كل المجموعات</button>${gsr.map(x => `<button class="chip ${sg === x.id ? 'active' : ''}" data-grp="${x.id}">${esc(x.title)} (${has(g).filter(m => m.profile && m.profile.groupId === x.id).length})</button>`).join('')}</div>` : '';
+  return `<div class="chips">${grades.map(x => `<button class="chip ${x === g ? 'active' : ''}" data-stu="${esc(x)}">${esc(gl(x))} (${has(x).length})</button>`).join('')}</div>${gchips}
     <h3>⏳ طلبات الاشتراك (${pend.length})</h3>
     <div class="list">${pend.map(p => `<div class="row"><div><div class="t">${esc(fullName(members.find(x => x.id === p.uid) || { name: p.name }))}</div><div class="s">${esc(p.email)} · رقم العملية: ${esc(p.ref)}</div></div><div class="acts"><button class="btn small" data-ok="${p.id}">قبول ✅</button><button class="btn red small" data-no="${p.id}">رفض</button></div></div>`).join('') || empty('مفيش طلبات جديدة.')}</div>
     <h3>✅ طلبة ${esc(gl(g))} (${act.length})</h3>
-    <div class="list">${act.map(m => `<div class="row"><div><div class="t">${esc(fullName(m))}</div><div class="s">${esc(m.email)}${m.profile ? ` · ${esc(m.profile.phone)} · ولي الأمر: ${esc(m.profile.parentPhone)}` : ''}</div></div><button class="btn red small" data-kick="${m.id}">طرد</button></div>`).join('') || empty('مفيش طلبة مشتركين لسه.')}</div>
+    <div class="list">${act.map(m => `<div class="row"><div><div class="t">${esc(fullName(m))}</div><div class="s">${esc(m.email)}${m.profile ? ` · ${esc(m.profile.phone)} · ولي الأمر: ${esc(m.profile.parentPhone)}${m.profile.groupName ? ' · 📅 ' + esc(m.profile.groupName) : ''}` : ''}</div></div><button class="btn red small" data-kick="${m.id}">طرد</button></div>`).join('') || empty('مفيش طلبة مشتركين لسه.')}</div>
     <p class="note" style="margin-top:10px">إجمالي المسجلين في المنصة: ${members.length}</p>`;
 }
 function viewAdmin() {
@@ -571,10 +588,12 @@ document.addEventListener('click', async e => {
   }
   const rt = cl('[data-resettx]');
   if (rt && isAdmin) { try { await setDoc(doc(db, 'settings', 'texts'), { [rt.dataset.resettx]: '' }, { merge: true }); toast('رجع النص الأصلي'); closeModal(); } catch (err) { toast('فشل: ' + err.code); } return; }
-  const t = e.target.closest('[data-tab],[data-grade],[data-pick],[data-del],[data-delgrade],[data-sec],[data-stu],[data-ok],[data-no],[data-kick],[data-regstart],[data-reglogin],[data-regback],[data-regout]');
+  const t = e.target.closest('[data-tab],[data-grade],[data-pick],[data-del],[data-delgrade],[data-sec],[data-stu],[data-ok],[data-no],[data-kick],[data-regstart],[data-reglogin],[data-regback],[data-regout],[data-grp],[data-chgrp]');
   if (!t) return;
   if (t.dataset.tab) { tab = t.dataset.tab; animUntil = Date.now() + 900; render(); window.scrollTo(0, 0); }
   else if (t.dataset.grade) { grade = t.dataset.grade; animUntil = Date.now() + 900; render(); }
+  else if (t.dataset.grp !== undefined) { stuGroup = t.dataset.grp; render(); }
+  else if (t.dataset.chgrp !== undefined) { openGroup(); }
   else if (t.dataset.regstart !== undefined) { reg.step = 1; $('.login-box').classList.add('reg'); renderReg(); }
   else if (t.dataset.reglogin !== undefined) { $('.login-box').classList.remove('reg'); }
   else if (t.dataset.regback !== undefined) { reg.step = Math.max(1, reg.step - 1); renderReg(); }
@@ -619,9 +638,12 @@ document.addEventListener('submit', async e => {
       }
       await addDoc(collection(db, k), { ...fd, createdAt: serverTimestamp() });
       f.reset(); toast('تمت الإضافة ✅');
+    } else if (f.id === 'grpForm') {
+      const g = data.groups.find(x => x.id === fd.groupId); if (!g) return;
+      await setDoc(doc(db, 'members', user.uid), { profile: { groupId: g.id, groupName: g.title, groupTime: g.time } }, { merge: true }); toast('تم تغيير المجموعة ✅');
     } else if (f.id === 'regForm') {
       Object.assign(reg.d, fd);
-      if (reg.step === 1) { if (!fd.gender) return toast('اختار النوع'); if (!grades.includes(fd.grade)) return toast('اختار السنة الدراسية'); reg.step = 2; }
+      if (reg.step === 1) { if (!fd.gender) return toast('اختار النوع'); if (!grades.includes(fd.grade)) return toast('اختار السنة الدراسية'); const gs = data.groups.filter(x => x.grade === fd.grade); if (gs.length && !gs.some(x => x.id === fd.groupId)) return toast('اختار المجموعة والمعاد'); if (!gs.length) reg.d.groupId = ''; reg.step = 2; }
       else if (reg.step === 2) {
         if (!phoneOk(fd.phone)) return toast('رقم الطالب مش صحيح (11 رقم يبدأ بـ 01)');
         if (!phoneOk(fd.parentPhone)) return toast('رقم ولي الأمر مش صحيح');
@@ -659,6 +681,7 @@ document.addEventListener('submit', async e => {
   } catch (err) { toast(err.code === 'permission-denied' ? 'مفيش صلاحية. اتأكد من القواعد وإيميل الأدمن' : 'حصل خطأ: ' + err.code); }
 });
 
+document.addEventListener('change', e => { if (e.target.name === 'grade' && e.target.closest('#regForm')) { Object.assign(reg.d, Object.fromEntries(new FormData(e.target.form))); reg.d.groupId = ''; renderReg(); } });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 document.addEventListener('dblclick', e => { if (!(isAdmin && edit)) return; const x = e.target.closest('.tab .tx'); if (x) openText(x); });
 applyTheme();
